@@ -15,26 +15,6 @@ body{
 	width: 100%;
 	text-align: center;
 }
-.mybutton {
-	color: rgba(127,255,255,0.75);
-	background: transparent;
-	outline: 1px solid rgba(127,255,255,0.75);
-	border: 0px;
-	padding: 5px 10px;
-	cursor: pointer;
-}
-
-.mybutton:hover {
-	background-color: rgba(0,255,255,0.5);
-}
-
-.mybutton:active {
-	color: #000000;
-	background-color: rgba(0,255,255,0.75);
-}
-
-.mybutton:focus{background-color:rgba(0,255,255,0.75)}
-
 
 
 .la-ball-clip-rotate-multiple,
@@ -230,6 +210,48 @@ body{
   box-shadow: 0 8px 16px 0 rgba(127,255,255,0.2);
 }
 
+svg#moon-nav image {
+	opacity: 0;
+	transition: 1s opacity;
+}
+svg#moon-nav a:hover image { 
+	opacity: 1;
+}
+svg#moon-nav a text {
+	font-family: Verdana, sans-serif;
+	font-size: 65px; fill: #fff;
+}
+
+ul.tab {
+    list-style-type:none;
+    margin: 0;
+    padding:0;
+    border-radius: 5px;
+	display:inline-table;
+}
+ul.tab li {
+    display:inline;
+    padding: 0;
+}
+ul.tab li label {
+  color: rgba(127,255,255,0.75);
+	background: transparent;
+	outline: 1px solid rgba(127,255,255,0.75);
+	border: 0px;
+	padding: 5px 10px;
+	cursor: pointer;
+  display: inline-block;
+}
+ul.tab li input[type="radio"] {
+    opacity: 0;
+    width:1px;
+    height:1px;
+}
+ul.tab li input[type="radio"]:checked ~ label {
+    background: rgba(0,255,255,0.75);
+    color: white;
+}
+
   </style>
 
   <script src="js/three.min.js"></script>
@@ -253,10 +275,24 @@ body{
 		<div></div>
 	</div>
 </div>
+
+
 <div id="globeViz"></div>
-<div id="menu">
-			<button class="mybutton sf-normal" id="b-2030" onclick="changeToHeat()" style="font-size:24px;">2030</button>
-			<button class="mybutton sf-normal" id="b-2050" onclick="changeToHotWet()" style="font-size:24px;">2050</button>
+
+			
+
+<div style="width:100%;position: absolute;bottom: 20px;width: 100%;text-align: center;">
+	<ul class="tab" style="width: 100%;text-align: center;">
+		<li style="font-size:24px;" class="sf-normal">
+			<input onclick="changeToHeat()" id="tab1" checked="checked" type="radio" name="tab" />
+			<label for="tab1">2030</label>
+		</li>
+		<li style="font-size:24px;" class="sf-normal">
+			<input onclick="changeToHotWet()" id="tab2" type="radio" name="tab" />
+			<label for="tab2">2050</label>
+		</li>
+		
+	</ul>
 </div>
 
 <script>
@@ -271,7 +307,7 @@ var INTERSECTED;
 const pointer = new THREE.Vector2();
 const screenpointer = new THREE.Vector2();
 
-document.getElementById("b-2030").focus();
+//document.getElementById("b-2030").focus();
 
 var mydata = [];
 var countries_data={};
@@ -397,10 +433,11 @@ fetch('data/world-110m.geojson').then(res => res.json()).then(countries =>{
 			} else {
 
 				//if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-				let mytooltip= document.getElementById("tooltip");
+				let mytooltip= document.getElementById("titlecard");
+				INTERSECTED = "";
 				mytooltip.innerHTML=""+INTERSECTED;
 				document.getElementById("infocard").style.visibility="hidden";
-				INTERSECTED = "";
+				
 				
 
 			}
