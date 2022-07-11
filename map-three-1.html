@@ -1,0 +1,57 @@
+<head>
+  <style> body { margin: 0; } </style>
+
+  <script src="three.min.js"></script>
+  <script src="TrackballControls.js"></script>
+  <script src="three-globe.min.js"></script>
+  <!--<script src="../../dist/three-globe.js"></script>-->
+</head>
+
+<body>
+<div id="globeViz"></div>
+
+<script>
+  fetch('world-110m.geojson').then(res => res.json()).then(countries =>
+  {
+    const Globe = new ThreeGlobe()
+      .globeImageUrl('earth-dark.jpg')
+      .polygonsData(countries.features.filter(d => d.properties.ISO_A2 !== 'AQ'))
+      .polygonCapColor(() => 'rgba(200, 0, 0, 0.7)')
+      .polygonSideColor(() => 'rgba(0, 200, 0, 0.1)')
+      .polygonStrokeColor(() => '#111');
+
+    setTimeout(() => Globe.polygonAltitude(() => Math.random()), 4000);
+
+    // Setup renderer
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('globeViz').appendChild(renderer.domElement);
+
+    // Setup scene
+    const scene = new THREE.Scene();
+    scene.add(Globe);
+    scene.add(new THREE.AmbientLight(0xbbbbbb));
+    scene.add(new THREE.DirectionalLight(0xffffff, 0.6));
+
+    // Setup camera
+    const camera = new THREE.PerspectiveCamera();
+    camera.aspect = window.innerWidth/ window.innerHeight;
+    camera.updateProjectionMatrix();
+    camera.position.z = 500;
+
+    // Add camera controls
+    const tbControls = new THREE.TrackballControls(camera, renderer.domElement);
+    tbControls.minDistance = 101;
+    tbControls.rotateSpeed = 5;
+    tbControls.zoomSpeed = 0.8;
+	//tbControls.noPan = true;
+    // Kick-off renderer
+    (function animate() { // IIFE
+      // Frame cycle
+      tbControls.update();
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
+    })();
+  });
+</script>
+</body>

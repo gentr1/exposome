@@ -1,0 +1,430 @@
+<head>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
+
+  <style> 
+body{   
+    margin: 0;  
+}
+  
+#menu {
+	position: absolute;
+	bottom: 20px;
+	width: 100%;
+	text-align: center;
+}
+.mybutton {
+	color: rgba(127,255,255,0.75);
+	background: transparent;
+	outline: 1px solid rgba(127,255,255,0.75);
+	border: 0px;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+
+.mybutton:hover {
+	background-color: rgba(0,255,255,0.5);
+}
+
+.mybutton:active {
+	color: #000000;
+	background-color: rgba(0,255,255,0.75);
+}
+
+
+.la-ball-clip-rotate-multiple,
+.la-ball-clip-rotate-multiple > div {
+    position: relative;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+.la-ball-clip-rotate-multiple {
+    display: block;
+    font-size: 0;
+    color: #fff;
+}
+.la-ball-clip-rotate-multiple.la-dark {
+    color: #333;
+}
+.la-ball-clip-rotate-multiple > div {
+    display: inline-block;
+    float: none;
+    background-color: currentColor;
+    border: 0 solid currentColor;
+}
+.la-ball-clip-rotate-multiple {
+    width: 32px;
+    height: 32px;
+}
+.la-ball-clip-rotate-multiple > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: transparent;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 100%;
+    -webkit-animation: ball-clip-rotate-multiple-rotate 1s ease-in-out infinite;
+       -moz-animation: ball-clip-rotate-multiple-rotate 1s ease-in-out infinite;
+         -o-animation: ball-clip-rotate-multiple-rotate 1s ease-in-out infinite;
+            animation: ball-clip-rotate-multiple-rotate 1s ease-in-out infinite;
+}
+.la-ball-clip-rotate-multiple > div:first-child {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border-right-color: transparent;
+    border-left-color: transparent;
+}
+.la-ball-clip-rotate-multiple > div:last-child {
+    width: 16px;
+    height: 16px;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    -webkit-animation-duration: .5s;
+       -moz-animation-duration: .5s;
+         -o-animation-duration: .5s;
+            animation-duration: .5s;
+    -webkit-animation-direction: reverse;
+       -moz-animation-direction: reverse;
+         -o-animation-direction: reverse;
+            animation-direction: reverse;
+}
+.la-ball-clip-rotate-multiple.la-sm {
+    width: 16px;
+    height: 16px;
+}
+.la-ball-clip-rotate-multiple.la-sm > div {
+    border-width: 1px;
+}
+.la-ball-clip-rotate-multiple.la-sm > div:first-child {
+    width: 16px;
+    height: 16px;
+}
+.la-ball-clip-rotate-multiple.la-sm > div:last-child {
+    width: 8px;
+    height: 8px;
+}
+.la-ball-clip-rotate-multiple.la-2x {
+    width: 64px;
+    height: 64px;
+}
+.la-ball-clip-rotate-multiple.la-2x > div {
+    border-width: 4px;
+}
+.la-ball-clip-rotate-multiple.la-2x > div:first-child {
+    width: 64px;
+    height: 64px;
+}
+.la-ball-clip-rotate-multiple.la-2x > div:last-child {
+    width: 32px;
+    height: 32px;
+}
+.la-ball-clip-rotate-multiple.la-3x {
+    width: 96px;
+    height: 96px;
+}
+.la-ball-clip-rotate-multiple.la-3x > div {
+    border-width: 6px;
+}
+.la-ball-clip-rotate-multiple.la-3x > div:first-child {
+    width: 96px;
+    height: 96px;
+}
+.la-ball-clip-rotate-multiple.la-3x > div:last-child {
+    width: 48px;
+    height: 48px;
+}
+/*
+ * Animation
+ */
+@-webkit-keyframes ball-clip-rotate-multiple-rotate {
+    0% {
+        -webkit-transform: translate(-50%, -50%) rotate(0deg);
+                transform: translate(-50%, -50%) rotate(0deg);
+    }
+    50% {
+        -webkit-transform: translate(-50%, -50%) rotate(180deg);
+                transform: translate(-50%, -50%) rotate(180deg);
+    }
+    100% {
+        -webkit-transform: translate(-50%, -50%) rotate(360deg);
+                transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+@-moz-keyframes ball-clip-rotate-multiple-rotate {
+    0% {
+        -moz-transform: translate(-50%, -50%) rotate(0deg);
+             transform: translate(-50%, -50%) rotate(0deg);
+    }
+    50% {
+        -moz-transform: translate(-50%, -50%) rotate(180deg);
+             transform: translate(-50%, -50%) rotate(180deg);
+    }
+    100% {
+        -moz-transform: translate(-50%, -50%) rotate(360deg);
+             transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+@-o-keyframes ball-clip-rotate-multiple-rotate {
+    0% {
+        -o-transform: translate(-50%, -50%) rotate(0deg);
+           transform: translate(-50%, -50%) rotate(0deg);
+    }
+    50% {
+        -o-transform: translate(-50%, -50%) rotate(180deg);
+           transform: translate(-50%, -50%) rotate(180deg);
+    }
+    100% {
+        -o-transform: translate(-50%, -50%) rotate(360deg);
+           transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+@keyframes ball-clip-rotate-multiple-rotate {
+    0% {
+        -webkit-transform: translate(-50%, -50%) rotate(0deg);
+           -moz-transform: translate(-50%, -50%) rotate(0deg);
+             -o-transform: translate(-50%, -50%) rotate(0deg);
+                transform: translate(-50%, -50%) rotate(0deg);
+    }
+    50% {
+        -webkit-transform: translate(-50%, -50%) rotate(180deg);
+           -moz-transform: translate(-50%, -50%) rotate(180deg);
+             -o-transform: translate(-50%, -50%) rotate(180deg);
+                transform: translate(-50%, -50%) rotate(180deg);
+    }
+    100% {
+        -webkit-transform: translate(-50%, -50%) rotate(360deg);
+           -moz-transform: translate(-50%, -50%) rotate(360deg);
+             -o-transform: translate(-50%, -50%) rotate(360deg);
+                transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.sf-title{
+	font-family: 'Orbitron', sans-serif;
+	color:white;
+	font-size:44px;
+}
+.sf-normal{
+	font-family: 'Orbitron', sans-serif;
+	color:white;
+	
+}
+
+#infocard {
+  border-radius: 15px;
+  border: 2px solid rgba(127,255,255,1.0);
+  box-shadow: 0 4px 8px 0 rgba(127,255,255,0.2);
+  transition: 0.3s;
+  //width: 40%;
+}
+
+#infocard:hover {
+  box-shadow: 0 8px 16px 0 rgba(127,255,255,0.2);
+}
+
+  </style>
+
+  <script src="three.min.js"></script>
+  <script src="OrbitControls.js"></script>
+  <script src="three-globe.min.js"></script>
+  <script src="d3-7.6.1.min.js"></script>
+  <script src="d3-fetch.v1.min.js"></script>
+ 
+</head>
+
+<body>
+<div id="tooltip" style="position:absolute;color: white;z-index:9999;font-size: 18px;"></div>
+<div id="infocard" class="sf-normal" style="position:absolute;color: white;z-index:19999;width:300px;height:500px;right:20px;top:20px;visibility:hidden;">
+	<h1 style="margin:10px;"><b id="titlecard" ></b></h4>
+</div>
+<div id="starting-cover" style="position:absolute;width:100%;height:100%;top:0px;left:0px;z-index:9999;background-color:#251d36;">
+	<div class="sf-title" style="position:relative;width: 100%;top:calc(50% - 148px);text-align: center;">EXPOSOME</div>
+	<div class="sf-normal" style="position:relative;width: 100%;top:calc(50% - 148px);text-align: center;">how climate change impacts global health</div>
+	<div style="color: #64d6e2;position:relative;left:calc(50% - 48px);top:calc(50% - 48px);" class="la-ball-clip-rotate-multiple la-3x">
+		<div></div>
+		<div></div>
+	</div>
+</div>
+<div id="globeViz"></div>
+<div id="menu">
+			<button class="mybutton sf-normal" id="table" onclick="changeToHeat()" style="font-size:24px;">2030</button>
+			<button class="mybutton sf-normal" id="sphere" onclick="changeToHotWet()" style="font-size:24px;">2050</button>
+</div>
+
+<script>
+
+var tbControls;
+var Globe;
+var renderer;
+var scene;
+var camera;
+var raycaster;
+var INTERSECTED;
+const pointer = new THREE.Vector2();
+const screenpointer = new THREE.Vector2();
+
+var mydata = [];
+var countries_data={};
+//var color_scale_cold_hot = d3.scaleLinear().domain([0,1.0]).range(["rgba(15,50,100,0.7)","rgba(159,0,35,0.7)"]);
+var color_scale_cold_hot = d3.scaleLinear().domain([0,1.0]).range(["rgba(254,245,239,0.7)","rgba(255,0,9,0.7)"]);
+fetch('world-110m.geojson').then(res => res.json()).then(countries =>{
+	//return fetch('mooc-countries.csv',{ method: 'get',headers: {'content-type': 'text/csv;charset=UTF-8'}}).then(data =>{
+	return d3.dsv(',', 'mooc-countries2.csv').then(data =>{
+//d3.csv("mooc-countries.csv", function(error, data) {		
+//	d3.json("world-110m.geojson", function (countries) {
+            
+        setTimeout(() => document.getElementById("starting-cover").style.visibility="hidden", 2500);
+		
+		mydata = data
+		console.log(mydata)
+		for (var i=0;i<mydata.length;i++){
+			countries_data[mydata[i]["code"]]={"heat":mydata[i]["heat"],"hotwet":mydata[i]["hotwet"]};			
+		}
+		
+		console.log(countries);
+		
+		function init(){
+			//d3.csv("mooc-countries.csv", function(error, data) {	
+		//mydata = data;
+		Globe = new ThreeGlobe()
+		  .globeImageUrl('earth-dark.jpg')
+		  .polygonsData(countries.features.filter(d => d.properties.ISO_A2 !== 'AQ'))
+		  //.polygonCapColor(() => 'rgba(200, 0, 0, 0.7)')
+		  .polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id]["heat"])} else {return 'rgba(50, 50, 50, 0.7)'}})
+		  //.polygonSideColor(() => 'rgba(0, 200, 0, 0.1)')
+		  .polygonSideColor(() => 'rgba(3, 136, 252, 0.1)')
+		  //.polygonStrokeColor(() => '#111');
+		  .polygonStrokeColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return '#111'} else {return '#111'}});
+		//.polygonLabel(function(d) {return '<b>'+d.id+'</b> <br />'});
+		console.log(Globe)
+		//setTimeout(() => Globe.polygonAltitude(() => Math.random()), 2000);
+		setTimeout(() => Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return countries_data[d.id]["heat"]} else {return 0.01}}), 2000);
+		// Setup renderer
+		
+		raycaster = new THREE.Raycaster();
+		renderer = new THREE.WebGLRenderer();
+		renderer.setSize(window.innerWidth, window.innerHeight);
+		document.getElementById('globeViz').appendChild(renderer.domElement);
+
+		// Setup scene
+		scene = new THREE.Scene();
+		scene.add(Globe);
+		scene.add(new THREE.AmbientLight(0xbbbbbb));
+		scene.add(new THREE.DirectionalLight(0xffffff, 0.6));
+
+		// Setup camera
+		camera = new THREE.PerspectiveCamera();
+		camera.aspect = window.innerWidth/ window.innerHeight;
+		camera.updateProjectionMatrix();
+		camera.position.z = 500;
+
+		// Add camera controls
+		tbControls = new THREE.OrbitControls(camera, renderer.domElement);
+		tbControls.minDistance = 101;
+		tbControls.rotateSpeed = 1;
+		tbControls.zoomSpeed = 0.8;
+		tbControls.minPolarAngle = Math.PI/4;
+		tbControls.maxPolarAngle = Math.PI/2;
+		tbControls.enableDamping =true;
+		tbControls.dampingFactor = 0.03;
+		tbControls.enablePan = false;
+		document.addEventListener( 'mousemove', onPointerMove );
+		window.addEventListener( 'resize', onWindowResize );
+		}
+		
+		
+		function onWindowResize() {
+
+			camera.aspect = window.innerWidth / window.innerHeight;
+			camera.updateProjectionMatrix();
+
+			renderer.setSize( window.innerWidth, window.innerHeight );
+
+		}
+		function onPointerMove( event ) {
+				screenpointer.x = ( event.clientX);
+				screenpointer.y = ( event.clientY);
+				pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+				pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+				//console.log(pointer.x)
+			}
+			
+		// Kick-off renderer
+		function animate() { // IIFE
+		  
+			raycaster.setFromCamera( pointer, camera );
+			//var intersects = raycaster.intersectObjects( Globe, false );
+			const intersects = raycaster.intersectObjects( scene.children, true );
+			//console.log(scene.children[0].children[0].children[4].children)
+			if ( intersects.length > 0 ) {
+				//console.log(intersects.length)
+				//if (intersects[ 0 ].object.type=='Mesh'){
+					var polygon= intersects[ 0 ].object.parent//
+					if (polygon.hasOwnProperty('__data')){
+					var polygon_id=polygon.__data.data.properties.name;
+					//console.log(polygon.__data.data)
+					if ( INTERSECTED != polygon_id ) {
+
+				//	if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+
+						INTERSECTED = polygon_id;
+				//	INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
+				//	INTERSECTED.material.emissive.setHex( 0xff0000 );
+
+				//}
+					//console.log(INTERSECTED)
+					document.getElementById("infocard").style.visibility="visible";
+					let mytooltip= document.getElementById("titlecard");
+					
+					mytooltip.innerHTML=""+INTERSECTED;
+					//mytooltip.style.left = (screenpointer.x+20)+'px';
+					//mytooltip.style.top = (screenpointer.y+20)+'px';
+					}
+					}
+				//}
+				
+
+			} else {
+
+				//if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+				let mytooltip= document.getElementById("tooltip");
+				mytooltip.innerHTML=""+INTERSECTED;
+				document.getElementById("infocard").style.visibility="hidden";
+				INTERSECTED = "";
+				
+
+			}
+		  // Frame cycle
+		  tbControls.update();
+		  renderer.render(scene, camera);
+		  requestAnimationFrame(animate);
+		  
+		}
+		
+		init();
+		animate();
+		
+		
+		
+		
+	  //});
+  
+	});
+});
+
+function changeToHeat(){
+			setTimeout(() => Globe.polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id]["heat"])} else {return 'rgba(50, 50, 50, 0.7)'}}), 0);
+			Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return countries_data[d.id]["heat"]} else {return 0.01}})
+			
+		}
+		function changeToHotWet(){
+			setTimeout(() => Globe.polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id]["hotwet"])} else {return 'rgba(50, 50, 50, 0.7)'}}), 0);
+			Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return countries_data[d.id]["hotwet"]} else {return 0.01}})			
+		}
+</script>
+</body>

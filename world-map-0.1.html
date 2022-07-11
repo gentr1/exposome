@@ -1,0 +1,120 @@
+<head>
+  <style> 
+body { margin: 0; } 
+  
+#menu {
+	position: absolute;
+	bottom: 20px;
+	width: 100%;
+	text-align: center;
+}
+.mybutton {
+	color: rgba(127,255,255,0.75);
+	background: transparent;
+	outline: 1px solid rgba(127,255,255,0.75);
+	border: 0px;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+
+.mybutton:hover {
+	background-color: rgba(0,255,255,0.5);
+}
+
+.mybutton:active {
+	color: #000000;
+	background-color: rgba(0,255,255,0.75);
+}
+  </style>
+
+  <script src="three.min.js"></script>
+  <script src="OrbitControls.js"></script>
+  <script src="three-globe.min.js"></script>
+  <script src="d3-7.6.1.min.js"></script>
+  <script src="d3-fetch.v1.min.js"></script>
+ 
+</head>
+
+<body>
+<div id="globeViz"></div>
+<div id="menu">
+			<button class="mybutton" id="table">TABLE</button>
+			<button class="mybutton" id="sphere">SPHERE</button>
+			<button class="mybutton" id="helix">HELIX</button>
+			<button class="mybutton" id="grid">GRID</button>
+</div>
+<script>
+var mydata = [];
+var countries_data={};
+//var color_scale_cold_hot = d3.scaleLinear().domain([0,1.0]).range(["rgba(15,50,100,0.7)","rgba(159,0,35,0.7)"]);
+var color_scale_cold_hot = d3.scaleLinear().domain([0,1.0]).range(["rgba(254,245,239,0.7)","rgba(255,0,9,0.7)"]);
+fetch('world-110m.geojson').then(res => res.json()).then(countries =>{
+	//return fetch('mooc-countries.csv',{ method: 'get',headers: {'content-type': 'text/csv;charset=UTF-8'}}).then(data =>{
+	return d3.dsv(',', 'mooc-countries.csv').then(data =>{
+//d3.csv("mooc-countries.csv", function(error, data) {		
+//	d3.json("world-110m.geojson", function (countries) {
+            
+        
+		mydata = data
+		console.log(mydata)
+		for (var i=0;i<mydata.length;i++){
+			countries_data[mydata[i]["code"]]={"total":mydata[i]["total"]};			
+		}
+		
+		console.log(countries);
+			//d3.csv("mooc-countries.csv", function(error, data) {	
+		//mydata = data;
+		const Globe = new ThreeGlobe()
+		  .globeImageUrl('earth-dark.jpg')
+		  .polygonsData(countries.features.filter(d => d.properties.ISO_A2 !== 'AQ'))
+		  //.polygonCapColor(() => 'rgba(200, 0, 0, 0.7)')
+		  .polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(0.01+(countries_data[d.id]["total"]/900.0))} else {return 'rgba(50, 50, 50, 0.7)'}})
+		  //.polygonSideColor(() => 'rgba(0, 200, 0, 0.1)')
+		  .polygonSideColor(() => 'rgba(3, 136, 252, 0.1)')
+		  //.polygonStrokeColor(() => '#111');
+		  .polygonStrokeColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return '#111'} else {return '#111'}});
+		//.polygonLabel(function(d) {return '<b>'+d.id+'</b> <br />'});
+
+		//setTimeout(() => Globe.polygonAltitude(() => Math.random()), 2000);
+		setTimeout(() => Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return 0.01+(countries_data[d.id]["total"]/900.0)} else {return 0.01}}), 2000);
+		// Setup renderer
+		const renderer = new THREE.WebGLRenderer();
+		renderer.setSize(window.innerWidth, window.innerHeight);
+		document.getElementById('globeViz').appendChild(renderer.domElement);
+
+		// Setup scene
+		const scene = new THREE.Scene();
+		scene.add(Globe);
+		scene.add(new THREE.AmbientLight(0xbbbbbb));
+		scene.add(new THREE.DirectionalLight(0xffffff, 0.6));
+
+		// Setup camera
+		const camera = new THREE.PerspectiveCamera();
+		camera.aspect = window.innerWidth/ window.innerHeight;
+		camera.updateProjectionMatrix();
+		camera.position.z = 500;
+
+		// Add camera controls
+		const tbControls = new THREE.OrbitControls(camera, renderer.domElement);
+		tbControls.minDistance = 101;
+		tbControls.rotateSpeed = 1;
+		tbControls.zoomSpeed = 0.8;
+		tbControls.minPolarAngle = Math.PI/4;
+		tbControls.maxPolarAngle = Math.PI/2;
+		tbControls.enableDamping =true;
+		tbControls.dampingFactor = 0.03;
+		tbControls.enablePan = false;
+		// Kick-off renderer
+		(function animate() { // IIFE
+		  // Frame cycle
+		  tbControls.update();
+		  renderer.render(scene, camera);
+		  requestAnimationFrame(animate);
+		  
+		})();
+	  //});
+  
+	});
+});
+</script>
+</body>
