@@ -229,11 +229,11 @@ body{
 
   </style>
 
-  <script src="three.min.js"></script>
-  <script src="OrbitControls.js"></script>
-  <script src="three-globe.min.js"></script>
-  <script src="d3-7.6.1.min.js"></script>
-  <script src="d3-fetch.v1.min.js"></script>
+  <script src="js/three.min.js"></script>
+  <script src="js/OrbitControls.js"></script>
+  <script src="js/three-globe.min.js"></script>
+  <script src="js/d3-7.6.1.min.js"></script>
+  <script src="js/d3-fetch.v1.min.js"></script>
  
 </head>
 
@@ -272,9 +272,9 @@ var mydata = [];
 var countries_data={};
 //var color_scale_cold_hot = d3.scaleLinear().domain([0,1.0]).range(["rgba(15,50,100,0.7)","rgba(159,0,35,0.7)"]);
 var color_scale_cold_hot = d3.scaleLinear().domain([0,1.0]).range(["rgba(254,245,239,0.7)","rgba(255,0,9,0.7)"]);
-fetch('world-110m.geojson').then(res => res.json()).then(countries =>{
+fetch('data/world-110m.geojson').then(res => res.json()).then(countries =>{
 	//return fetch('mooc-countries.csv',{ method: 'get',headers: {'content-type': 'text/csv;charset=UTF-8'}}).then(data =>{
-	return d3.dsv(',', 'mooc-countries2.csv').then(data =>{
+	return d3.dsv(',', 'data/mooc-countries2.csv').then(data =>{
 //d3.csv("mooc-countries.csv", function(error, data) {		
 //	d3.json("world-110m.geojson", function (countries) {
             
@@ -292,7 +292,7 @@ fetch('world-110m.geojson').then(res => res.json()).then(countries =>{
 			//d3.csv("mooc-countries.csv", function(error, data) {	
 		//mydata = data;
 		Globe = new ThreeGlobe()
-		  .globeImageUrl('earth-dark.jpg')
+		  .globeImageUrl('images/earth-dark.jpg')
 		  .polygonsData(countries.features.filter(d => d.properties.ISO_A2 !== 'AQ'))
 		  //.polygonCapColor(() => 'rgba(200, 0, 0, 0.7)')
 		  .polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id]["heat"])} else {return 'rgba(50, 50, 50, 0.7)'}})
