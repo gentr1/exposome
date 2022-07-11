@@ -33,6 +33,9 @@ body{
 	background-color: rgba(0,255,255,0.75);
 }
 
+.mybutton:focus{background-color:rgba(0,255,255,0.75)}
+
+
 
 .la-ball-clip-rotate-multiple,
 .la-ball-clip-rotate-multiple > div {
@@ -240,7 +243,7 @@ body{
 <body>
 <div id="tooltip" style="position:absolute;color: white;z-index:9999;font-size: 18px;"></div>
 <div id="infocard" class="sf-normal" style="position:absolute;color: white;z-index:19999;width:300px;height:500px;right:20px;top:20px;visibility:hidden;">
-	<h1 style="margin:10px;"><b id="titlecard" ></b></h4>
+	<h2 style="margin:10px;"><b id="titlecard" ></b></h2>
 </div>
 <div id="starting-cover" style="position:absolute;width:100%;height:100%;top:0px;left:0px;z-index:9999;background-color:#251d36;">
 	<div class="sf-title" style="position:relative;width: 100%;top:calc(50% - 148px);text-align: center;">EXPOSOME</div>
@@ -252,8 +255,8 @@ body{
 </div>
 <div id="globeViz"></div>
 <div id="menu">
-			<button class="mybutton sf-normal" id="table" onclick="changeToHeat()" style="font-size:24px;">2030</button>
-			<button class="mybutton sf-normal" id="sphere" onclick="changeToHotWet()" style="font-size:24px;">2050</button>
+			<button class="mybutton sf-normal" id="b-2030" onclick="changeToHeat()" style="font-size:24px;">2030</button>
+			<button class="mybutton sf-normal" id="b-2050" onclick="changeToHotWet()" style="font-size:24px;">2050</button>
 </div>
 
 <script>
@@ -267,6 +270,8 @@ var raycaster;
 var INTERSECTED;
 const pointer = new THREE.Vector2();
 const screenpointer = new THREE.Vector2();
+
+document.getElementById("b-2030").focus();
 
 var mydata = [];
 var countries_data={};
