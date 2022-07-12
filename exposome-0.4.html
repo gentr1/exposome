@@ -613,19 +613,19 @@ ul.tab2 li input[type="radio"]:checked ~ label {
 <div style="width:100%;position: absolute;bottom: 20px;width: 100%;text-align: center;">
 	<ul class="tab" style="width: 100%;text-align: center;">
 		<li style="font-size:24px;" class="sf-normal">
-			<input onclick="changeToHeat()" id="tab1" checked="checked" type="radio" name="tab" />
-			<label for="tab1">2030-2039</label>
+			<input onclick="changePeriodData(this)" id="tab1" checked="checked" type="radio" name="tab" />
+			<label for="tab1">2020-2039</label>
 		</li>
 		<li style="font-size:24px;" class="sf-normal">
-			<input onclick="changeToHotWet()" id="tab2" type="radio" name="tab" />
+			<input onclick="changePeriodData(this)" id="tab2" type="radio" name="tab" />
 			<label for="tab2">2040-2059</label>
 		</li>
 		<li style="font-size:24px;" class="sf-normal">
-			<input onclick="changeToHeat()" id="tab3" type="radio" name="tab" />
+			<input onclick="changePeriodData(this)" id="tab3" type="radio" name="tab" />
 			<label for="tab3">2060-2079</label>
 		</li>
 		<li style="font-size:24px;" class="sf-normal">
-			<input onclick="changeToHotWet()" id="tab4" type="radio" name="tab" />
+			<input onclick="changePeriodData(this)" id="tab4" type="radio" name="tab" />
 			<label for="tab4">2080-2099</label>
 		</li>
 		
@@ -667,7 +667,8 @@ var INTERSECTED;
 const pointer = new THREE.Vector2();
 const screenpointer = new THREE.Vector2();
 var selected_age="adult-age";
-
+var selected_period="2020-2039"
+var selected_health_impact="40C_";
 
 var string_h='';
 string_h+='<ul class="tab2" style="width: 100%;">'
@@ -693,7 +694,7 @@ var color_scale_cold_hot = d3.scaleLinear().domain([0,1.0]).range(["rgba(254,245
 fetch('data/world-110m.geojson').then(res => res.json()).then(countries =>{
 	//return fetch('mooc-countries.csv',{ method: 'get',headers: {'content-type': 'text/csv;charset=UTF-8'}}).then(data =>{
 	//return d3.dsv(',', 'data/mooc-countries2.csv').then(data =>{
-	return d3.dsv(';', 'data/ssp5-daysabove40-2080-2099.csv').then(data =>{
+	return d3.dsv(';', 'data/SSP5-CLIMATE_DATA.csv').then(data =>{
 //d3.csv("mooc-countries.csv", function(error, data) {		
 //	d3.json("world-110m.geojson", function (countries) {
             
@@ -704,7 +705,25 @@ fetch('data/world-110m.geojson').then(res => res.json()).then(countries =>{
 		mydata = data
 		console.log(mydata)
 		for (var i=0;i<mydata.length;i++){
-			countries_data[mydata[i]["ISO3"]]={"heat":mydata[i]["DAYS"],"hotwet":mydata[i]["DAYS"]};			
+			countries_data[mydata[i]["ISO3_CODE"]]={
+			"40C_2020-2039_mean":mydata[i]["40C_2020-2039_mean"],
+			"40C_2040-2059_mean":mydata[i]["40C_2040-2059_mean"],
+			"40C_2060-2079_mean":mydata[i]["40C_2060-2079_mean"],
+			"40C_2080-2099_mean":mydata[i]["40C_2080-2099_mean"],
+			"40C_2020-2039_max":mydata[i]["40C_2020-2039_max"],
+			"40C_2040-2059_max":mydata[i]["40C_2040-2059_max"],
+			"40C_2060-2079_max":mydata[i]["40C_2060-2079_max"],
+			"40C_2080-2099_max":mydata[i]["40C_2080-2099_max"],
+			"40C_2020-2039_min":mydata[i]["40C_2020-2039_min"],
+			"40C_2040-2059_min":mydata[i]["40C_2040-2059_min"],
+			"40C_2060-2079_min":mydata[i]["40C_2060-2079_min"],
+			"40C_2080-2099_min":mydata[i]["40C_2080-2099_min"],
+			"ZIKA_PERC_2020-2039_mean":mydata[i]["ZIKA_PERC_2020-2039_mean"],
+			"ZIKA_PERC_2040-2059_mean":mydata[i]["ZIKA_PERC_2040-2059_mean"],
+			"ZIKA_PERC_2060-2079_mean":mydata[i]["ZIKA_PERC_2060-2079_mean"],
+			"ZIKA_PERC_2080-2099_mean":mydata[i]["ZIKA_PERC_2080-2099_mean"],
+			
+			};			
 		}
 		
 		console.log(countries);
@@ -718,7 +737,7 @@ fetch('data/world-110m.geojson').then(res => res.json()).then(countries =>{
 		  .globeImageUrl('images/earth-dark.jpg')
 		  .polygonsData(countries.features.filter(d => d.properties.ISO_A2 !== 'AQ'))
 		  //.polygonCapColor(() => 'rgba(200, 0, 0, 0.7)')
-		  .polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id]["heat"]/200.0)} else {return 'rgba(50, 50, 50, 0.7)'}})
+		  .polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id]["40C_2020-2039_mean"]/200.0)} else {return 'rgba(50, 50, 50, 0.7)'}})
 		  //.polygonSideColor(() => 'rgba(0, 200, 0, 0.1)')
 		  .polygonSideColor(() => 'rgba(3, 136, 252, 0.1)')
 		  //.polygonStrokeColor(() => '#111');
@@ -726,7 +745,7 @@ fetch('data/world-110m.geojson').then(res => res.json()).then(countries =>{
 		//.polygonLabel(function(d) {return '<b>'+d.id+'</b> <br />'});
 		//console.log(Globe)
 		//setTimeout(() => Globe.polygonAltitude(() => Math.random()), 2000);
-		setTimeout(() => Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return 0.01+countries_data[d.id]["heat"]/200.0} else {return 0.01}}), 2000);
+		setTimeout(() => Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return 0.01+countries_data[d.id]["40C_2020-2039_mean"]/200.0} else {return 0.01}}), 2000);
 		// Setup renderer
 		
 		raycaster = new THREE.Raycaster();
@@ -812,7 +831,12 @@ fetch('data/world-110m.geojson').then(res => res.json()).then(countries =>{
 					document.getElementById("infocard").style.visibility="visible";
 					let mytooltip= document.getElementById("titlecard");
 					
-					mytooltip.innerHTML=""+INTERSECTED;
+					var string_inf_card='';
+					string_inf_card+='<h2>'+INTERSECTED+'</h2>'
+					string_inf_card+='<p>Mean no of days above 40C:</p>'
+					string_inf_card+='<p>Min no of days above 40C:</p>'
+					string_inf_card+='<p>Max no of days above 40C:</p>'
+					document.getElementById("titlecard").innerHTML=string_inf_card;
 					//mytooltip.style.left = (screenpointer.x+20)+'px';
 					//mytooltip.style.top = (screenpointer.y+20)+'px';
 					}
@@ -863,6 +887,38 @@ function changeToHotWet(){
 		document.getElementById(selected_age).focus();	
 	}
 }
+
+function changePeriodData(elem){
+	
+	if (elem.id=="tab1"){
+		selected_period=selected_health_impact+"2020-2039_mean"
+	}
+	else if (elem.id=="tab2"){
+		selected_period=selected_health_impact+"2040-2059_mean"
+	}
+	else if (elem.id=="tab3"){
+		selected_period=selected_health_impact+"2060-2079_mean"
+	}
+	else if (elem.id=="tab4"){
+		selected_period=selected_health_impact+"2080-2099_mean"
+	}
+	console.log(selected_period)
+	if (selected_health_impact=="40C_"){
+		setTimeout(() => Globe.polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id][selected_period]/200.0)} else {return 'rgba(50, 50, 50, 0.7)'}}), 0);
+		Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return 0.01+(countries_data[d.id][selected_period]/200.0)} else {return 0.01}})
+	}
+	if (selected_health_impact=="ZIKA_PERC_"){
+	
+		setTimeout(() => Globe.polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id][selected_period]/100.0)} else {return 'rgba(50, 50, 50, 0.7)'}}), 0);
+		Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return 0.01+(countries_data[d.id][selected_period]/100.0)} else {return 0.01}})
+	}
+	if (document.getElementById(selected_age)){
+		document.getElementById(selected_age).focus();	
+	}
+}
+
+
+
 
 function h1Data(){
 	setTimeout(() => Globe.polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id]["heat"])} else {return 'rgba(50, 50, 50, 0.7)'}}), 0);
@@ -1036,30 +1092,35 @@ function finished_playing(){
 }
 
 function changeH1(){
+	selected_health_impact="40C_";
 	var string_content='';
 	string_content+='<p>An <a href="https://www.nationalpartnership.org/our-work/health/moms-and-babies/higher-temperatures-hurt-moms.html">online article </a> by the national partnership for women and families explains that heat exposure during pregnancy hurts babies\' health. Maternal exposure to heat is associated with an increased risk of preterm and early term birth, low and decreased birth weight, stillbirth, and harmful newborn stress. From climate predictions, we count the number of days with a temperature above 40C and infer some risk of preterm birth.</p>'
 	document.getElementById("content-info").innerHTML=string_content;
 	play_audio("preterm");
 }
 function changeH2(){
+	selected_health_impact="ZIKA_PERC_";
 	var string_content='';
 	string_content+='<p>A study by <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6111177/">Tesla et Al</a> associates the rise in Zika Virus transmission with average temperatures between 28 and 34 degrees .</p><p>From climate predictions, we count the number of days within this temperature range to infer a greater Zika virus transmission rate. For unborn babies, contracting the Zika Virus can lead to serious birth defects such as microcephaly (where the baby head is smaller than normal).</p>'
 	document.getElementById("content-info").innerHTML=string_content;
 	play_audio("zika");
 }
 function changeH3(){
+	selected_health_impact="40C_";
 	var string_content='';
 	string_content+='<p>A study by <a href="https://academic.oup.com/aje/article/172/9/1053/147649">Ostro et Al</a> covering 87% of California\'s total population shows that incremental increases of 5.6C above 30C lead to a rise in the percentage of hospital admissions for Dehydration (+11.2%) , Heat stroke (+364%) , and Acute renal failure (+10.2%).</p><p>From climate predictions, we count the number of days with a temperature above 40C and infer that they will lead to a rise in such hospital admissions.</p>'
 	document.getElementById("content-info").innerHTML=string_content;
 	play_audio("admissions");
 }
 function changeH4(){
+	selected_health_impact="ZIKA_PERC_";
 	var string_content='';
 	string_content+='<p>A <a href="https://www.thelancet.com/journals/lanplh/article/PIIS2542-51962100132-7/fulltext">Lancet study</a> associates the rise of the number of months suitable to Malaria transmission per year with monthly precipitations greater than 80 mm, average temperatures between 18 and 32 degrees celsius, and a relative humidity greater than 60%</p><p>From climate predictions, we count the number of suitable transmission months per year or Lancet Countdown malaria indicator (LCMI). Countries with higher LCMI are more likely to show a higher incidence of Malaria in densely populated areas.</p>'
 	document.getElementById("content-info").innerHTML=string_content;
 	play_audio("malaria");
 }
 function changeH5(){
+	selected_health_impact="40C_";
 	var string_content='';
 	string_content+='<p>A <a href="https://www.sciencedirect.com/science/article/abs/pii/S0140673606680793?casa_token=ssO8BVbWFVUAAAAA:vP6o2Kr6sNklzCIBadc0I0SWinJfdDRQZItbuDbw5pjci0dvocPkwVJoGyUE_oGoXPb6UG_3#bib29">Lancet study</a> has observed that for each degree Celsius above the optimum of 16.5 C in the preceding month, mortality is increased by 1.86%, 12.82%, and 2.72% for cardiovascular disease, respiratory diseases, and total mortality, respectively.'
 	document.getElementById("content-info").innerHTML=string_content;
@@ -1072,6 +1133,8 @@ function playIntro(){
 
 function exitIntro(){
 	document.getElementById("intropanel").style.visibility="hidden";
+	document.getElementById("myplayer").pause();
+		document.getElementById("myplayer").currentTime = 0;
 }
 function enterIntro(){
 	document.getElementById("intropanel").style.visibility="visible";
