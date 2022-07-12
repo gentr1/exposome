@@ -478,7 +478,17 @@ ul.tab2 li input[type="radio"]:checked ~ label {
   transform: translateX(0) skewX(-45deg);
 }
 
+#infopanel {
+  border-radius: 15px;
+  border: 2px solid rgba(127,255,255,1.0);
+  box-shadow: 0 4px 8px 0 rgba(127,255,255,0.2);
+  transition: 0.3s;
+  //width: 40%;
+}
 
+#infopanel:hover {
+  box-shadow: 0 8px 16px 0 rgba(127,255,255,0.2);
+}
 
 
   </style>
@@ -492,10 +502,12 @@ ul.tab2 li input[type="radio"]:checked ~ label {
 </head>
 
 <body>
+
 <div id="tooltip" style="position:absolute;color: white;z-index:9999;font-size: 18px;"></div>
 <div id="infocard" class="sf-normal" style="position:absolute;color: white;z-index:19999;width:300px;height:500px;right:20px;top:20px;visibility:hidden;">
 	<h2 style="margin:10px;"><b id="titlecard" ></b></h2>
 </div>
+
 
 <div style="position:absolute;z-index:9999;width:35%;">
 <ul id="hexGrid">
@@ -530,6 +542,11 @@ ul.tab2 li input[type="radio"]:checked ~ label {
 </ul>
 </div>
 <div style="position:absolute;z-index:9999;width:35%;top:460px;text-align: left;" id="health-problems">
+</div>
+<div id="infopanel" class="sf-normal" style="position:absolute;color: white;z-index:19999;width:30%;height:300px;left:30px;top:500px;visibility:hidden;">
+	<audio id="myplayer" src="audio/ding.mp3" onplay="playing()" onended="finished_playing()" autoplay></audio>
+	<img id="audio-image" src="images/sound-on-128.png" onclick="toggleSound(this);" style="margin:8px;width:28px;height:28px;">
+	<div style="margin:10px;" id="content-info"></div>
 </div>
 <!-- <div style="position:absolute;z-index:9999;width:35%;top:340px"> -->
 <!-- <ul id="hexGrid2"> -->
@@ -597,6 +614,24 @@ ul.tab2 li input[type="radio"]:checked ~ label {
 
 <script>
 
+var sound_on=true;
+var stored = localStorage.getItem("sound_on");
+if (stored){
+	sound_on=JSON.parse(stored);
+}
+if (sound_on){
+	document.getElementById("audio-image").src="images/sound-on-128.png"	
+}
+else{
+	document.getElementById("audio-image").src="images/sound-off-128.png"
+}
+var audio_library={
+"ding":"audio/ding.mp3",
+"admissions":"audio/admissions.mp3",
+"malaria":"audio/malaria.mp3"
+}
+var audio_played=[];
+
 var tbControls;
 var Globe;
 var renderer;
@@ -637,10 +672,10 @@ fetch('data/world-110m.geojson').then(res => res.json()).then(countries =>{
 //d3.csv("mooc-countries.csv", function(error, data) {		
 //	d3.json("world-110m.geojson", function (countries) {
             
-        setTimeout(() => document.getElementById("starting-cover").style.visibility="hidden", 2500);
+        //setTimeout(() => document.getElementById("starting-cover").style.visibility="hidden", 2500);
 		
-		
-		
+		 //setTimeout(() => document.getElementById("infopanel").style.visibility="visible", 2500);
+		setTimeout(function() {document.getElementById("starting-cover").style.visibility="hidden";document.getElementById("infopanel").style.visibility="visible";adultData();changeH3();},2500)
 		mydata = data
 		console.log(mydata)
 		for (var i=0;i<mydata.length;i++){
@@ -764,9 +799,9 @@ fetch('data/world-110m.geojson').then(res => res.json()).then(countries =>{
 
 				//if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
 				let mytooltip= document.getElementById("titlecard");
-				INTERSECTED = "";
+				INTERSECTED = "World";
 				mytooltip.innerHTML=""+INTERSECTED;
-				document.getElementById("infocard").style.visibility="hidden";
+				//document.getElementById("infocard").style.visibility="hidden";
 				
 				
 
@@ -902,6 +937,85 @@ string_h+='		</li>'
 	string_h+='		</li>'	
 	string_h+='	</ul>'
 	document.getElementById("health-problems").innerHTML=string_h;
+}
+
+function toggleSound(elem){
+	sound_on=!sound_on;
+	localStorage.setItem("sound_on", sound_on);
+	console.log(sound_on)
+	if (sound_on){
+		elem.src="images/sound-on-128.png"
+		play_audio("ding")
+	}
+	else{
+		elem.src="images/sound-off-128.png"
+		document.getElementById("myplayer").pause();
+		document.getElementById("myplayer").currentTime = 0;
+	}
+	
+}
+
+function play_audio(track){
+	if (sound_on){
+		
+		if (track=="ding" && audio_played.indexOf(track)==-1){
+			document.getElementById("myplayer").src=audio_library["ding"];
+			document.getElementById("myplayer").play();
+		}
+		if (track=="admissions" && audio_played.indexOf(track)==-1){
+			document.getElementById("myplayer").src=audio_library["admissions"];
+			document.getElementById("myplayer").play();
+		}
+		if (track=="malaria" && audio_played.indexOf(track)==-1){
+			document.getElementById("myplayer").src=audio_library["malaria"];
+			document.getElementById("myplayer").play();
+		}
+	}
+}
+
+function playing(){
+	//console.log("playing :" +document.getElementById("myplayer").src)
+	var key= document.getElementById("myplayer").src.split("audio/")[1].replace('.mp3','');
+	if (audio_played.indexOf(key)==-1){
+		audio_played.push(key);
+		
+	}
+	console.log(audio_played)
+}
+function finished_playing(){
+	var key= document.getElementById("myplayer").src.split("audio/")[1].replace('.mp3','');
+	//if (key=="circular_economy_score1"){
+	//	play_audio("water_health_score");
+	//}
+	
+}
+
+function changeH1(){
+	var string_content='';
+	string_content+='h1'
+	document.getElementById("content-info").innerHTML=string_content;
+}
+function changeH2(){
+	var string_content='';
+	string_content+='h2'
+	document.getElementById("content-info").innerHTML=string_content;
+}
+function changeH3(){
+	var string_content='';
+	string_content+='<p>A study by <a href="https://academic.oup.com/aje/article/172/9/1053/147649">Ostro et Al</a> covering 87% of California\'s total population shows that incremental increases of 5.6C above 30C lead to a rise in the percentage of hospital admissions for Dehydration (+11.2%) , Heat stroke (+364%) , and Acute renal failure (+10.2%).</p><p>From climate predictions, we count the number of days with a temperature above 40C and infer that they will lead to a rise in such hospital admissions.</p>'
+	document.getElementById("content-info").innerHTML=string_content;
+	play_audio("admissions");
+}
+function changeH4(){
+	var string_content='';
+	string_content+='<p>A <a href="https://www.thelancet.com/journals/lanplh/article/PIIS2542-51962100132-7/fulltext">Lancet study</a> associates the rise of the number of months suitable to Malaria transmission per year with monthly precipitations greater than 80 mm, average temperatures between 18 and 32 degrees celsius, and a relative humidity greater than 60%</p><p>From climate predictions, we count the number of suitable transmission months per year or Lancet Countdown malaria indicator (LCMI). Countries with higher LCMI are more likely to show a higher incidence of Malaria in densely populated areas.</p>'
+	document.getElementById("content-info").innerHTML=string_content;
+	play_audio("malaria");
+}
+function changeH5(){
+	var string_content='';
+	string_content+='h5'
+	document.getElementById("content-info").innerHTML=string_content;
 }
 </script>
 </body>
