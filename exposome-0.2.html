@@ -253,7 +253,37 @@ ul.tab li input[type="radio"]:checked ~ label {
     color: white;
 }
 
-
+ul.tab2 {
+    list-style-type:none;
+    margin: 0;
+    padding:0;
+    border-radius: 5px;
+	//display:inline-table;
+}
+ul.tab2 li {
+    display:inline;
+    padding: 15px;
+	margin: 0px;
+}
+ul.tab2 li label {
+  color: rgba(127,255,255,0.75);
+	background: transparent;
+	outline: 1px solid rgba(127,255,255,0.75);
+	border: 0px;
+	padding: 5px 10px;
+	border-radius: 5px;
+	cursor: pointer;
+ // display: inline-block;
+}
+ul.tab2 li input[type="radio"] {
+    opacity: 0;
+    width:1px;
+    height:1px;
+}
+ul.tab2 li input[type="radio"]:checked ~ label {
+    background: rgba(0,255,255,0.75);
+    color: white;
+}
 
 /* Hexagons */
 #hexGrid {
@@ -318,7 +348,7 @@ ul.tab li input[type="radio"]:checked ~ label {
   box-sizing: border-box;
   background-color: rgba(0, 128, 128, 0.8);
   font-weight: 300;
-  transition: transform .2s ease-out, opacity .3s ease-out;
+  transition: transform .1s ease-out, opacity .1s ease-out;
 }
 
 .hex h1 {
@@ -470,38 +500,56 @@ ul.tab li input[type="radio"]:checked ~ label {
 <div style="position:absolute;z-index:9999;width:35%;">
 <ul id="hexGrid">
   <li class="hex">
-    <a class="hexIn" href="#">
+    <a class="hexIn" href="#" onclick="foetusData()" id="unborn-age">
       <img src="images/foetus1.jpg" alt="" />
       <h1>FOETUS</h1>
       <p>See how exposure to climate change can change unborn babies' health</p>
     </a>
   </li>
   <li class="hex">
-    <a class="hexIn" href="#">
+    <a class="hexIn" href="#" onclick="childrenData()" id="children-age">
       <img src="images/children1.jpg" alt="" />
-      <h1>CHILDREN</h1>
+      <h1>0 -14 YEARS OLD</h1>
       <p>See how exposure to climate change can change children's health</p>
     </a>
   </li>
   <li class="hex">
-    <a class="hexIn" href="#">
+    <a class="hexIn" href="#" onclick="adultData()" id="adult-age">
       <img src="images/adults.jpg" alt="" />
-      <h1>YOUTH & ADULTs</h1>
+      <h1>14-64 YEARS OLD</h1>
       <p>See how exposure to climate change can change youth and adults's health</p>
     </a>
   </li>
   <li class="hex">
-    <a class="hexIn" href="#">
+    <a class="hexIn" href="#" onclick="elderlyData()" id="elderly-age">
       <img src="images/elderly.jpg" alt="" />
-      <h1>SENIOR</h1>
+      <h1>65 YEARS AND OVER</h1>
       <p>See how exposure to climate change can change senior's health</p>
     </a>
   </li>
-  
-  
 </ul>
-
 </div>
+<div style="position:absolute;z-index:9999;width:35%;top:460px;text-align: left;" id="health-problems">
+</div>
+<!-- <div style="position:absolute;z-index:9999;width:35%;top:340px"> -->
+<!-- <ul id="hexGrid2"> -->
+  <!-- <li class="hex"> -->
+    <!-- <a class="hexIn" href="#" onclick="h1Data()" id="adult-h1"> -->
+      <!-- <img src="images/hospital.jpg" alt="" /> -->
+      <!-- <h1>HOSPITAL ADMISSIONS</h1> -->
+      <!-- <p>Increase in the percentage of hospital admissions</p> -->
+    <!-- </a> -->
+  <!-- </li> -->
+  <!-- <li class="hex"> -->
+    <!-- <a class="hexIn" href="#" onclick="h2Data()" id="adult-h2"> -->
+      <!-- <img src="images/malaria.jpg" alt="" /> -->
+      <!-- <h1>MALARIA</h1> -->
+      <!-- <p>Increase in the number of suitable transmission months per year</p> -->
+    <!-- </a> -->
+  <!-- </li> -->
+ 
+<!-- </ul> -->
+<!-- </div> -->
 
 <div id="starting-cover" style="position:absolute;width:100%;height:100%;top:0px;left:0px;z-index:9999;background-color:#251d36;">
 	<div class="sf-title" style="position:relative;width: 100%;top:calc(50% - 148px);text-align: center;">EXPOSOME</div>
@@ -525,7 +573,23 @@ ul.tab li input[type="radio"]:checked ~ label {
 		</li>
 		<li style="font-size:24px;" class="sf-normal">
 			<input onclick="changeToHotWet()" id="tab2" type="radio" name="tab" />
-			<label for="tab2">2050</label>
+			<label for="tab2">2040</label>
+		</li>
+		<li style="font-size:24px;" class="sf-normal">
+			<input onclick="changeToHeat()" id="tab3" type="radio" name="tab" />
+			<label for="tab3">2050</label>
+		</li>
+		<li style="font-size:24px;" class="sf-normal">
+			<input onclick="changeToHotWet()" id="tab4" type="radio" name="tab" />
+			<label for="tab4">2060</label>
+		</li>
+		<li style="font-size:24px;" class="sf-normal">
+			<input onclick="changeToHeat()" id="tab5" type="radio" name="tab" />
+			<label for="tab5">2070</label>
+		</li>
+		<li style="font-size:24px;" class="sf-normal">
+			<input onclick="changeToHotWet()" id="tab6" type="radio" name="tab" />
+			<label for="tab6">2080</label>
 		</li>
 		
 	</ul>
@@ -542,8 +606,25 @@ var raycaster;
 var INTERSECTED;
 const pointer = new THREE.Vector2();
 const screenpointer = new THREE.Vector2();
+var selected_age="adult-age";
 
-//document.getElementById("b-2030").focus();
+
+var string_h='';
+string_h+='<ul class="tab2" style="width: 100%;">'
+string_h+='		<li style="font-size:24px;" class="sf-normal">'
+string_h+='			<input onclick="changeH1()" id="h1" checked="checked" type="radio" name="tab2" />'
+string_h+='			<label for="h1">Hospital admissions</label>'
+string_h+='		</li>'
+string_h+='		<li style="font-size:24px;" class="sf-normal">'
+string_h+='			<input onclick="changeH2()" id="h2" type="radio" name="tab2" />'
+string_h+='			<label for="h2">Malaria</label>'
+string_h+='		</li>'	
+//string_h+='		<li style="font-size:24px;" class="sf-normal">'
+//string_h+='			<input onclick="changeH2()" id="h3" type="radio" name="tab2" />'
+//string_h+='			<label for="h3">Death</label>'
+//string_h+='		</li>'	
+string_h+='	</ul>'
+document.getElementById("health-problems").innerHTML=string_h;
 
 var mydata = [];
 var countries_data={};
@@ -551,16 +632,19 @@ var countries_data={};
 var color_scale_cold_hot = d3.scaleLinear().domain([0,1.0]).range(["rgba(254,245,239,0.7)","rgba(255,0,9,0.7)"]);
 fetch('data/world-110m.geojson').then(res => res.json()).then(countries =>{
 	//return fetch('mooc-countries.csv',{ method: 'get',headers: {'content-type': 'text/csv;charset=UTF-8'}}).then(data =>{
-	return d3.dsv(',', 'data/mooc-countries2.csv').then(data =>{
+	//return d3.dsv(',', 'data/mooc-countries2.csv').then(data =>{
+	return d3.dsv(';', 'data/ssp5-daysabove40-2080-2099.csv').then(data =>{
 //d3.csv("mooc-countries.csv", function(error, data) {		
 //	d3.json("world-110m.geojson", function (countries) {
             
         setTimeout(() => document.getElementById("starting-cover").style.visibility="hidden", 2500);
 		
+		
+		
 		mydata = data
 		console.log(mydata)
 		for (var i=0;i<mydata.length;i++){
-			countries_data[mydata[i]["code"]]={"heat":mydata[i]["heat"],"hotwet":mydata[i]["hotwet"]};			
+			countries_data[mydata[i]["ISO3"]]={"heat":mydata[i]["DAYS"],"hotwet":mydata[i]["DAYS"]};			
 		}
 		
 		console.log(countries);
@@ -568,11 +652,13 @@ fetch('data/world-110m.geojson').then(res => res.json()).then(countries =>{
 		function init(){
 			//d3.csv("mooc-countries.csv", function(error, data) {	
 		//mydata = data;
+		document.getElementById("adult-age").focus();
+		
 		Globe = new ThreeGlobe()
 		  .globeImageUrl('images/earth-dark.jpg')
 		  .polygonsData(countries.features.filter(d => d.properties.ISO_A2 !== 'AQ'))
 		  //.polygonCapColor(() => 'rgba(200, 0, 0, 0.7)')
-		  .polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id]["heat"])} else {return 'rgba(50, 50, 50, 0.7)'}})
+		  .polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id]["heat"]/200.0)} else {return 'rgba(50, 50, 50, 0.7)'}})
 		  //.polygonSideColor(() => 'rgba(0, 200, 0, 0.1)')
 		  .polygonSideColor(() => 'rgba(3, 136, 252, 0.1)')
 		  //.polygonStrokeColor(() => '#111');
@@ -580,7 +666,7 @@ fetch('data/world-110m.geojson').then(res => res.json()).then(countries =>{
 		//.polygonLabel(function(d) {return '<b>'+d.id+'</b> <br />'});
 		//console.log(Globe)
 		//setTimeout(() => Globe.polygonAltitude(() => Math.random()), 2000);
-		setTimeout(() => Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return countries_data[d.id]["heat"]} else {return 0.01}}), 2000);
+		setTimeout(() => Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return 0.01+countries_data[d.id]["heat"]/200.0} else {return 0.01}}), 2000);
 		// Setup renderer
 		
 		raycaster = new THREE.Raycaster();
@@ -600,7 +686,7 @@ fetch('data/world-110m.geojson').then(res => res.json()).then(countries =>{
 		camera.aspect = window.innerWidth/ window.innerHeight;
 		camera.updateProjectionMatrix();
 		camera.position.z = 500;
-
+		//camera.position.x = 1000;
 		// Add camera controls
 		tbControls = new THREE.OrbitControls(camera, renderer.domElement);
 		tbControls.minDistance = 101;
@@ -612,8 +698,11 @@ fetch('data/world-110m.geojson').then(res => res.json()).then(countries =>{
 		tbControls.dampingFactor = 0.03;
 		tbControls.enablePan = false;
 		document.addEventListener( 'mousemove', onPointerMove );
+		document.addEventListener( 'click', onDocumentMouseDown );
 		window.addEventListener( 'resize', onWindowResize );
 		}
+		
+		
 		
 		
 		function onWindowResize() {
@@ -630,6 +719,10 @@ fetch('data/world-110m.geojson').then(res => res.json()).then(countries =>{
 				pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
 				pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 				//console.log(pointer.x)
+			}
+			
+		function onDocumentMouseDown( event ) {
+				document.getElementById(selected_age).focus();
 			}
 			
 		// Kick-off renderer
@@ -699,11 +792,116 @@ fetch('data/world-110m.geojson').then(res => res.json()).then(countries =>{
 function changeToHeat(){
 			setTimeout(() => Globe.polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id]["heat"])} else {return 'rgba(50, 50, 50, 0.7)'}}), 0);
 			Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return countries_data[d.id]["heat"]} else {return 0.01}})
-			
+			if (document.getElementById(selected_age)){
+			document.getElementById(selected_age).focus();
+			}
 		}
-		function changeToHotWet(){
-			setTimeout(() => Globe.polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id]["hotwet"])} else {return 'rgba(50, 50, 50, 0.7)'}}), 0);
-			Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return countries_data[d.id]["hotwet"]} else {return 0.01}})			
-		}
+function changeToHotWet(){
+	setTimeout(() => Globe.polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id]["hotwet"])} else {return 'rgba(50, 50, 50, 0.7)'}}), 0);
+	Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return countries_data[d.id]["hotwet"]} else {return 0.01}})
+	if (document.getElementById(selected_age)){
+		document.getElementById(selected_age).focus();	
+	}
+}
+
+function h1Data(){
+	setTimeout(() => Globe.polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id]["heat"])} else {return 'rgba(50, 50, 50, 0.7)'}}), 0);
+	Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return countries_data[d.id]["heat"]} else {return 0.01}})
+	if (document.getElementById(selected_age)){
+	document.getElementById(selected_age).focus();
+	}
+	selected_h="adult-h1";
+	
+}
+
+function h2Data(){
+	setTimeout(() => Globe.polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id]["heat"])} else {return 'rgba(50, 50, 50, 0.7)'}}), 0);
+	Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return countries_data[d.id]["heat"]} else {return 0.01}})
+	if (document.getElementById(selected_age)){
+	document.getElementById(selected_age).focus();
+	}
+	selected_h="adult-h2";
+	
+}
+
+function foetusData(){
+	console.log("foetus data")
+	selected_age="unborn-age";
+	var string_h='';
+	string_h+='<ul class="tab2" style="width: 100%;">'
+	string_h+='		<li style="font-size:24px;" class="sf-normal">'
+	string_h+='			<input onclick="changeH1()" id="h1" checked="checked" type="radio" name="tab2" />'
+	string_h+='			<label for="h1">Preterm births</label>'
+	string_h+='		</li>'
+	string_h+='		<li style="font-size:24px;" class="sf-normal">'
+	string_h+='			<input onclick="changeH2()" id="h2" type="radio" name="tab2" />'
+	string_h+='			<label for="h2">Zika Virus</label>'
+	string_h+='		</li>'	
+	//string_h+='		<li style="font-size:24px;" class="sf-normal">'
+	//string_h+='			<input onclick="changeH2()" id="h3" type="radio" name="tab2" />'
+	//string_h+='			<label for="h3">Death</label>'
+	//string_h+='		</li>'	
+	string_h+='	</ul>'
+	document.getElementById("health-problems").innerHTML=string_h;
+}
+
+function childrenData(){
+	console.log("children data")
+	selected_age="children-age";
+	var string_h='';
+	string_h+='<ul class="tab2" style="width: 100%;">'
+string_h+='		<li style="font-size:24px;" class="sf-normal">'
+string_h+='			<input onclick="changeH3()" id="h3" checked="checked" type="radio" name="tab2" />'
+string_h+='			<label for="h3">Hospital admissions</label>'
+string_h+='		</li>'
+string_h+='		<li style="font-size:24px;" class="sf-normal">'
+string_h+='			<input onclick="changeH4()" id="h4" type="radio" name="tab2" />'
+string_h+='			<label for="h4">Malaria</label>'
+string_h+='		</li>'	
+//string_h+='		<li style="font-size:24px;" class="sf-normal">'
+//string_h+='			<input onclick="changeH2()" id="h3" type="radio" name="tab2" />'
+//string_h+='			<label for="h3">Death</label>'
+//string_h+='		</li>'	
+string_h+='	</ul>'
+	document.getElementById("health-problems").innerHTML=string_h;
+}
+
+function adultData(){
+	console.log("adult data")
+	selected_age="adult-age";
+	var string_h='';
+	string_h+='<ul class="tab2" style="width: 100%;">'
+string_h+='		<li style="font-size:24px;" class="sf-normal">'
+string_h+='			<input onclick="changeH3()" id="h3" checked="checked" type="radio" name="tab2" />'
+string_h+='			<label for="h3">Hospital admissions</label>'
+string_h+='		</li>'
+string_h+='		<li style="font-size:24px;" class="sf-normal">'
+string_h+='			<input onclick="changeH4()" id="h4" type="radio" name="tab2" />'
+string_h+='			<label for="h4">Malaria</label>'
+string_h+='		</li>'	
+//string_h+='		<li style="font-size:24px;" class="sf-normal">'
+//string_h+='			<input onclick="changeH2()" id="h3" type="radio" name="tab2" />'
+//string_h+='			<label for="h3">Death</label>'
+//string_h+='		</li>'	
+string_h+='	</ul>'
+	document.getElementById("health-problems").innerHTML=string_h;
+}
+
+function elderlyData(){
+	console.log("elderly data")
+	selected_age="elderly-age";
+	var string_h='';
+	string_h+='<ul class="tab2" style="width: 100%;">'
+	string_h+='		<li style="font-size:24px;" class="sf-normal">'
+string_h+='			<input onclick="changeH3()" id="h3" checked="checked" type="radio" name="tab2" />'
+string_h+='			<label for="h3">Hospital admissions</label>'
+string_h+='		</li>'
+	string_h+='		<li style="font-size:24px;" class="sf-normal">'
+	string_h+='			<input onclick="changeH5()" id="h5" type="radio" name="tab2" />'
+	string_h+='			<label for="h5">Mortality</label>'
+	string_h+='		</li>'	
+	string_h+='	</ul>'
+	document.getElementById("health-problems").innerHTML=string_h;
+}
 </script>
 </body>
