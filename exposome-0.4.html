@@ -1,0 +1,1143 @@
+<head>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
+
+  <style> 
+body{   
+    margin: 0;  
+}
+  
+#menu {
+	position: absolute;
+	bottom: 20px;
+	width: 100%;
+	text-align: center;
+}
+
+
+.la-ball-clip-rotate-multiple,
+.la-ball-clip-rotate-multiple > div {
+    position: relative;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+.la-ball-clip-rotate-multiple {
+    display: block;
+    font-size: 0;
+    color: #fff;
+}
+.la-ball-clip-rotate-multiple.la-dark {
+    color: #333;
+}
+.la-ball-clip-rotate-multiple > div {
+    display: inline-block;
+    float: none;
+    background-color: currentColor;
+    border: 0 solid currentColor;
+}
+.la-ball-clip-rotate-multiple {
+    width: 32px;
+    height: 32px;
+}
+.la-ball-clip-rotate-multiple > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: transparent;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 100%;
+    -webkit-animation: ball-clip-rotate-multiple-rotate 1s ease-in-out infinite;
+       -moz-animation: ball-clip-rotate-multiple-rotate 1s ease-in-out infinite;
+         -o-animation: ball-clip-rotate-multiple-rotate 1s ease-in-out infinite;
+            animation: ball-clip-rotate-multiple-rotate 1s ease-in-out infinite;
+}
+.la-ball-clip-rotate-multiple > div:first-child {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border-right-color: transparent;
+    border-left-color: transparent;
+}
+.la-ball-clip-rotate-multiple > div:last-child {
+    width: 16px;
+    height: 16px;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    -webkit-animation-duration: .5s;
+       -moz-animation-duration: .5s;
+         -o-animation-duration: .5s;
+            animation-duration: .5s;
+    -webkit-animation-direction: reverse;
+       -moz-animation-direction: reverse;
+         -o-animation-direction: reverse;
+            animation-direction: reverse;
+}
+.la-ball-clip-rotate-multiple.la-sm {
+    width: 16px;
+    height: 16px;
+}
+.la-ball-clip-rotate-multiple.la-sm > div {
+    border-width: 1px;
+}
+.la-ball-clip-rotate-multiple.la-sm > div:first-child {
+    width: 16px;
+    height: 16px;
+}
+.la-ball-clip-rotate-multiple.la-sm > div:last-child {
+    width: 8px;
+    height: 8px;
+}
+.la-ball-clip-rotate-multiple.la-2x {
+    width: 64px;
+    height: 64px;
+}
+.la-ball-clip-rotate-multiple.la-2x > div {
+    border-width: 4px;
+}
+.la-ball-clip-rotate-multiple.la-2x > div:first-child {
+    width: 64px;
+    height: 64px;
+}
+.la-ball-clip-rotate-multiple.la-2x > div:last-child {
+    width: 32px;
+    height: 32px;
+}
+.la-ball-clip-rotate-multiple.la-3x {
+    width: 96px;
+    height: 96px;
+}
+.la-ball-clip-rotate-multiple.la-3x > div {
+    border-width: 6px;
+}
+.la-ball-clip-rotate-multiple.la-3x > div:first-child {
+    width: 96px;
+    height: 96px;
+}
+.la-ball-clip-rotate-multiple.la-3x > div:last-child {
+    width: 48px;
+    height: 48px;
+}
+/*
+ * Animation
+ */
+@-webkit-keyframes ball-clip-rotate-multiple-rotate {
+    0% {
+        -webkit-transform: translate(-50%, -50%) rotate(0deg);
+                transform: translate(-50%, -50%) rotate(0deg);
+    }
+    50% {
+        -webkit-transform: translate(-50%, -50%) rotate(180deg);
+                transform: translate(-50%, -50%) rotate(180deg);
+    }
+    100% {
+        -webkit-transform: translate(-50%, -50%) rotate(360deg);
+                transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+@-moz-keyframes ball-clip-rotate-multiple-rotate {
+    0% {
+        -moz-transform: translate(-50%, -50%) rotate(0deg);
+             transform: translate(-50%, -50%) rotate(0deg);
+    }
+    50% {
+        -moz-transform: translate(-50%, -50%) rotate(180deg);
+             transform: translate(-50%, -50%) rotate(180deg);
+    }
+    100% {
+        -moz-transform: translate(-50%, -50%) rotate(360deg);
+             transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+@-o-keyframes ball-clip-rotate-multiple-rotate {
+    0% {
+        -o-transform: translate(-50%, -50%) rotate(0deg);
+           transform: translate(-50%, -50%) rotate(0deg);
+    }
+    50% {
+        -o-transform: translate(-50%, -50%) rotate(180deg);
+           transform: translate(-50%, -50%) rotate(180deg);
+    }
+    100% {
+        -o-transform: translate(-50%, -50%) rotate(360deg);
+           transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+@keyframes ball-clip-rotate-multiple-rotate {
+    0% {
+        -webkit-transform: translate(-50%, -50%) rotate(0deg);
+           -moz-transform: translate(-50%, -50%) rotate(0deg);
+             -o-transform: translate(-50%, -50%) rotate(0deg);
+                transform: translate(-50%, -50%) rotate(0deg);
+    }
+    50% {
+        -webkit-transform: translate(-50%, -50%) rotate(180deg);
+           -moz-transform: translate(-50%, -50%) rotate(180deg);
+             -o-transform: translate(-50%, -50%) rotate(180deg);
+                transform: translate(-50%, -50%) rotate(180deg);
+    }
+    100% {
+        -webkit-transform: translate(-50%, -50%) rotate(360deg);
+           -moz-transform: translate(-50%, -50%) rotate(360deg);
+             -o-transform: translate(-50%, -50%) rotate(360deg);
+                transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.sf-title{
+	font-family: 'Orbitron', sans-serif;
+	color:white;
+	font-size:44px;
+}
+.sf-normal{
+	font-family: 'Orbitron', sans-serif;
+	color:white;
+	
+}
+
+#infocard {
+  border-radius: 15px;
+  border: 2px solid rgba(127,255,255,1.0);
+  box-shadow: 0 4px 8px 0 rgba(127,255,255,0.2);
+  transition: 0.3s;
+  //width: 40%;
+}
+
+#infocard:hover {
+  box-shadow: 0 8px 16px 0 rgba(127,255,255,0.2);
+}
+
+svg#moon-nav image {
+	opacity: 0;
+	transition: 1s opacity;
+}
+svg#moon-nav a:hover image { 
+	opacity: 1;
+}
+svg#moon-nav a text {
+	font-family: Verdana, sans-serif;
+	font-size: 65px; fill: #fff;
+}
+
+ul.tab {
+    list-style-type:none;
+    margin: 0;
+    padding:0;
+    border-radius: 5px;
+	display:inline-table;
+}
+ul.tab li {
+    display:inline;
+    padding: 0;
+}
+ul.tab li label {
+  color: rgba(127,255,255,0.75);
+	background: transparent;
+	outline: 1px solid rgba(127,255,255,0.75);
+	border: 0px;
+	padding: 5px 10px;
+	border-radius: 5px;
+	cursor: pointer;
+  display: inline-block;
+}
+ul.tab li input[type="radio"] {
+    opacity: 0;
+    width:1px;
+    height:1px;
+}
+ul.tab li input[type="radio"]:checked ~ label {
+    background: rgba(0,255,255,0.75);
+    color: white;
+}
+
+ul.tab2 {
+    list-style-type:none;
+    margin: 0;
+    padding:0;
+    border-radius: 5px;
+	//display:inline-table;
+}
+ul.tab2 li {
+    display:inline;
+    padding: 15px;
+	margin: 0px;
+}
+ul.tab2 li label {
+  color: rgba(127,255,255,0.75);
+	background: transparent;
+	outline: 1px solid rgba(127,255,255,0.75);
+	border: 0px;
+	padding: 5px 10px;
+	border-radius: 5px;
+	cursor: pointer;
+ // display: inline-block;
+}
+ul.tab2 li input[type="radio"] {
+    opacity: 0;
+    width:1px;
+    height:1px;
+}
+ul.tab2 li input[type="radio"]:checked ~ label {
+    background: rgba(0,255,255,0.75);
+    color: white;
+}
+
+/* Hexagons */
+#hexGrid {
+  overflow: hidden;
+  width: 90%;
+  min-height:400px;
+  margin: 0 auto;
+  padding: 0.866% 0;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+}
+
+#hexGrid:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.hex {
+  position: relative;
+  list-style-type: none;
+  float: left;
+  overflow: hidden;
+  visibility: hidden;
+  outline: 1px solid transparent;  /* fix for jagged edges in FF on hover transition */
+  transform: rotate(-60deg) skewY(30deg) translatez(-1px);
+}
+
+.hex * {
+  position: absolute;
+  visibility: visible;
+  outline: 1px solid transparent;  /* fix for jagged edges in FF on hover transition */
+}
+
+.hexIn {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+  transform: skewY(-30deg) rotate(60deg);
+}
+
+
+/*** HEX CONTENT **********************************************************************/
+
+.hex img {
+  left: -100%;
+  right: -100%;
+  width: auto;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.hex h1,
+.hex p {
+  margin: 0;
+  width: 102%;
+  left: -1%;  /* prevent line on the right where background doesn't cover image */
+  padding: 5%;
+  box-sizing: border-box;
+  background-color: rgba(0, 128, 128, 0.8);
+  font-weight: 300;
+  transition: transform .1s ease-out, opacity .1s ease-out;
+}
+
+.hex h1 {
+  bottom: 50%;
+  padding-top: 50%;
+  font-size: 1.5em;
+  z-index: 1;
+  transform: translateY(-100%) translatez(-1px);
+}
+
+.hex h1:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 45%;
+  width: 10%;
+  text-align: center;
+  border-bottom: 1px solid #fff;
+}
+
+.hex p {
+  top: 50%;
+  padding-bottom: 50%;
+  transform: translateY(100%) translatez(-1px);
+}
+
+
+/*** HOVER EFFECT  **********************************************************************/
+
+.hexIn:hover h1, .hexIn:focus h1, .hexIn:hover p, .hexIn:focus p {
+  transform: translateY(0%) translatez(-1px);
+}
+
+
+/*** SPACING AND SIZING *****************************************************************/
+
+@media (min-width:1201px) {  /* <- 2-3  hexagons per row */
+  .hex {
+    width: 32.666%;    /* = (100-2) / 3 */
+    padding-bottom: 37.720%;    /* =  width / sin(60) */
+  }
+  .hex:nth-child(5n+1),
+  .hex:nth-child(5n+2) {
+    transform: translateX(50%) rotate(-60deg) skewY(30deg);
+  }
+  .hex:nth-child(5n+3),
+  .hex:nth-child(5n+4),
+  .hex:nth-child(5n+5) {
+    margin-top: -8.564%;
+    margin-bottom: -8.564%;
+  }
+  .hex:nth-child(5n+2),
+  .hex:nth-child(5n+4) {
+    margin-right: 1%;
+    margin-left: 1%;
+  }
+  .hex:nth-child(5n+1) {
+    margin-left: 0.5%;
+  }
+  .hex:nth-child(5n+3),
+  .hex:nth-child(5n+6) {
+    clear: left;
+  }
+}
+
+@media (max-width: 1200px) {  /* <- 1-2  hexagons per row */
+  .hex {
+    width: 49.5%;    /* = (100-1) / 2 */
+    padding-bottom: 57.158%;    /* =  width / sin(60) */
+  }
+  .hex:nth-child(3n+1) {
+    transform: translateX(50%) rotate(-60deg) skewY(30deg);
+  }
+  .hex:nth-child(3n+2),
+  .hex:nth-child(3n+3) {
+    margin-top: -13.423%;
+    margin-bottom: -13.423%;
+  }
+  .hex:nth-child(3n+1) {
+    margin-left: 0.5%
+  }
+  .hex:nth-child(3n+3) {
+    margin-left: 1%;
+  }
+  .hex:nth-child(3n+2),
+  .hex:nth-child(3n+4) {
+    clear: left;
+  }
+}
+
+@media (max-width: 400px) {
+  #hexGrid {
+    font-size: 13px;
+  }
+}
+
+/* End Hexagons */
+/* fork on github button */
+#fork{
+  font-family: 'Raleway', sans-serif;
+  position:fixed;
+  top:0;
+  left:0;
+  color:#000;
+  text-decoration:none;
+  border:1px solid #000;
+  padding:.5em .7em;
+  margin:1%;
+  transition: color .5s;
+  overflow:hidden;
+}
+#fork:before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 130%; height: 100%;
+  background: #000;
+  z-index: -1;
+  transform-origin:0 0 ;
+  transform:translateX(-100%) skewX(-45deg);
+  transition: transform .5s;
+}
+#fork:hover {
+  color: #fff;
+}
+#fork:hover:before {
+  transform: translateX(0) skewX(-45deg);
+}
+
+#infopanel {
+  border-radius: 15px;
+  border: 2px solid rgba(127,255,255,1.0);
+  box-shadow: 0 4px 8px 0 rgba(127,255,255,0.2);
+  transition: 0.3s;
+  //width: 40%;
+}
+
+#infopanel:hover {
+  box-shadow: 0 8px 16px 0 rgba(127,255,255,0.2);
+}
+
+.mybutton {
+	color: rgba(127,255,255,0.75);
+	background: transparent;
+	outline: 1px solid rgba(127,255,255,0.75);
+	border: 0px;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+
+.mybutton:hover {
+	background-color: rgba(0,255,255,0.5);
+}
+
+.mybutton:active {
+	color: #000000;
+	background-color: rgba(0,255,255,0.75);
+}
+
+  </style>
+
+  <script src="js/three.min.js"></script>
+  <script src="js/OrbitControls.js"></script>
+  <script src="js/three-globe.min.js"></script>
+  <script src="js/d3-7.6.1.min.js"></script>
+  <script src="js/d3-fetch.v1.min.js"></script>
+ 
+</head>
+
+<body>
+
+<button class="mybutton sf-normal" onclick="enterIntro()" style="position:absolute;left:calc(50% - 40px);top:20px;">INFO</button>
+<div id="intropanel" style="position:absolute;color: white;z-index:99999;width:calc(100% - 20px);height:calc(80% - 20px);font-size: 18px;left:10px;top:10px;visibility:hidden;background-color:#251d36;text-align: center;">
+	<div style="width:80%;display: inline-block;  ">
+		<h2 class="sf-title">EXPOSOME DESCRIPTION</h2>
+		<button class="mybutton" onclick="playIntro()">Play audio</button>
+		<p class="sf-normal">Human health is influenced not only by genetic factors, but also by environmental exposures (such as air pollutants, chemicals, radiation etc.) and psychosocial stress. To help scientists study the effects that non-genetic factors have on human health, the exposome paradigm was proposed in 2005. The exposome can be described as a person's cumulative lifetime exposure to environmental factors and their related biological responses. Apart from direct health effects to individuals, the exposome can also alter genetic factors which may be passed down to future generations creating additional health concerns.</p>
+		<img src="images/exposome.jpeg" style="width:300px;" alt="" />
+		<p class="sf-normal">Climate change alters the exposome through various mechanisms, with possible impacts on the health and well-being of humans.</p>
+		<button class="mybutton" onclick="exitIntro()">Exit</button>
+	</div>
+</div>
+<div id="tooltip" style="position:absolute;color: white;z-index:9999;font-size: 18px;"></div>
+<div id="infocard" class="sf-normal" style="position:absolute;color: white;z-index:19999;width:300px;height:500px;right:20px;top:20px;visibility:hidden;">
+	<h2 style="margin:10px;"><b id="titlecard" ></b></h2>
+</div>
+
+
+<div style="position:absolute;z-index:9999;width:35%;">
+<ul id="hexGrid">
+  <li class="hex">
+    <a class="hexIn" href="#" onclick="foetusData()" id="unborn-age">
+      <img src="images/foetus1.jpg" alt="" />
+      <h1>UNBORN BABIES</h1>
+      <p>See how exposure to climate change can change unborn babies' health</p>
+    </a>
+  </li>
+  <li class="hex">
+    <a class="hexIn" href="#" onclick="childrenData()" id="children-age">
+      <img src="images/children1.jpg" alt="" />
+      <h1>0 -14 YEARS OLD</h1>
+      <p>See how exposure to climate change can change children's health</p>
+    </a>
+  </li>
+  <li class="hex">
+    <a class="hexIn" href="#" onclick="adultData()" id="adult-age">
+      <img src="images/adults.jpg" alt="" />
+      <h1>14-64 YEARS OLD</h1>
+      <p>See how exposure to climate change can change youth and adults's health</p>
+    </a>
+  </li>
+  <li class="hex">
+    <a class="hexIn" href="#" onclick="elderlyData()" id="elderly-age">
+      <img src="images/elderly.jpg" alt="" />
+      <h1>65 YEARS AND OVER</h1>
+      <p>See how exposure to climate change can change senior's health</p>
+    </a>
+  </li>
+</ul>
+</div>
+<div style="position:absolute;z-index:9999;width:35%;top:460px;text-align: left;" id="health-problems">
+</div>
+<div id="infopanel" class="sf-normal" style="position:absolute;color: white;z-index:19999;width:30%;height:300px;left:30px;top:500px;visibility:hidden;">
+	<audio id="myplayer" src="audio/ding.mp3" onplay="playing()" onended="finished_playing()" autoplay></audio>
+	<img id="audio-image" src="images/sound-on-128.png" onclick="toggleSound(this);" style="margin:8px;width:28px;height:28px;">
+	<div style="margin:10px;" id="content-info"></div>
+</div>
+<!-- <div style="position:absolute;z-index:9999;width:35%;top:340px"> -->
+<!-- <ul id="hexGrid2"> -->
+  <!-- <li class="hex"> -->
+    <!-- <a class="hexIn" href="#" onclick="h1Data()" id="adult-h1"> -->
+      <!-- <img src="images/hospital.jpg" alt="" /> -->
+      <!-- <h1>HOSPITAL ADMISSIONS</h1> -->
+      <!-- <p>Increase in the percentage of hospital admissions</p> -->
+    <!-- </a> -->
+  <!-- </li> -->
+  <!-- <li class="hex"> -->
+    <!-- <a class="hexIn" href="#" onclick="h2Data()" id="adult-h2"> -->
+      <!-- <img src="images/malaria.jpg" alt="" /> -->
+      <!-- <h1>MALARIA</h1> -->
+      <!-- <p>Increase in the number of suitable transmission months per year</p> -->
+    <!-- </a> -->
+  <!-- </li> -->
+ 
+<!-- </ul> -->
+<!-- </div> -->
+
+<div id="starting-cover" style="position:absolute;width:100%;height:100%;top:0px;left:0px;z-index:9999;background-color:#251d36;">
+	<div class="sf-title" style="position:relative;width: 100%;top:calc(50% - 148px);text-align: center;">EXPOSOME</div>
+	<div class="sf-normal" style="position:relative;width: 100%;top:calc(50% - 148px);text-align: center;">how climate change impacts global health</div>
+	<div style="color: #64d6e2;position:relative;left:calc(50% - 48px);top:calc(50% - 48px);" class="la-ball-clip-rotate-multiple la-3x">
+		<div></div>
+		<div></div>
+	</div>
+</div>
+
+
+<div id="globeViz"></div>
+
+			
+
+<div style="width:100%;position: absolute;bottom: 20px;width: 100%;text-align: center;">
+	<ul class="tab" style="width: 100%;text-align: center;">
+		<li style="font-size:24px;" class="sf-normal">
+			<input onclick="changePeriodData(this)" id="tab1" checked="checked" type="radio" name="tab" />
+			<label for="tab1">2020-2039</label>
+		</li>
+		<li style="font-size:24px;" class="sf-normal">
+			<input onclick="changePeriodData(this)" id="tab2" type="radio" name="tab" />
+			<label for="tab2">2040-2059</label>
+		</li>
+		<li style="font-size:24px;" class="sf-normal">
+			<input onclick="changePeriodData(this)" id="tab3" type="radio" name="tab" />
+			<label for="tab3">2060-2079</label>
+		</li>
+		<li style="font-size:24px;" class="sf-normal">
+			<input onclick="changePeriodData(this)" id="tab4" type="radio" name="tab" />
+			<label for="tab4">2080-2099</label>
+		</li>
+		
+		
+	</ul>
+</div>
+
+<script>
+
+var sound_on=true;
+var stored = localStorage.getItem("sound_on");
+if (stored){
+	sound_on=JSON.parse(stored);
+}
+if (sound_on){
+	document.getElementById("audio-image").src="images/sound-on-128.png"	
+}
+else{
+	document.getElementById("audio-image").src="images/sound-off-128.png"
+}
+var audio_library={
+"ding":"audio/ding.mp3",
+"admissions":"audio/admissions.mp3",
+"malaria":"audio/malaria.mp3",
+"zika":"audio/zika.mp3",
+"preterm":"audio/preterm.mp3",
+"mortality":"audio/mortality.mp3",
+"exposome":"audio/exposome.mp3",
+}
+var audio_played=[];
+
+var tbControls;
+var Globe;
+var renderer;
+var scene;
+var camera;
+var raycaster;
+var INTERSECTED;
+const pointer = new THREE.Vector2();
+const screenpointer = new THREE.Vector2();
+var selected_age="adult-age";
+var selected_period="2020-2039"
+var selected_health_impact="40C_";
+
+var string_h='';
+string_h+='<ul class="tab2" style="width: 100%;">'
+string_h+='		<li style="font-size:24px;" class="sf-normal">'
+string_h+='			<input onclick="changeH1()" id="h1" checked="checked" type="radio" name="tab2" />'
+string_h+='			<label for="h1">Hospital admissions</label>'
+string_h+='		</li>'
+string_h+='		<li style="font-size:24px;" class="sf-normal">'
+string_h+='			<input onclick="changeH2()" id="h2" type="radio" name="tab2" />'
+string_h+='			<label for="h2">Malaria</label>'
+string_h+='		</li>'	
+//string_h+='		<li style="font-size:24px;" class="sf-normal">'
+//string_h+='			<input onclick="changeH2()" id="h3" type="radio" name="tab2" />'
+//string_h+='			<label for="h3">Death</label>'
+//string_h+='		</li>'	
+string_h+='	</ul>'
+document.getElementById("health-problems").innerHTML=string_h;
+
+var mydata = [];
+var countries_data={};
+//var color_scale_cold_hot = d3.scaleLinear().domain([0,1.0]).range(["rgba(15,50,100,0.7)","rgba(159,0,35,0.7)"]);
+var color_scale_cold_hot = d3.scaleLinear().domain([0,1.0]).range(["rgba(254,245,239,0.7)","rgba(255,0,9,0.7)"]);
+fetch('data/world-110m.geojson').then(res => res.json()).then(countries =>{
+	//return fetch('mooc-countries.csv',{ method: 'get',headers: {'content-type': 'text/csv;charset=UTF-8'}}).then(data =>{
+	//return d3.dsv(',', 'data/mooc-countries2.csv').then(data =>{
+	return d3.dsv(';', 'data/SSP5-CLIMATE_DATA.csv').then(data =>{
+//d3.csv("mooc-countries.csv", function(error, data) {		
+//	d3.json("world-110m.geojson", function (countries) {
+            
+        //setTimeout(() => document.getElementById("starting-cover").style.visibility="hidden", 2500);
+		
+		 //setTimeout(() => document.getElementById("infopanel").style.visibility="visible", 2500);
+		setTimeout(function() {document.getElementById("starting-cover").style.visibility="hidden";document.getElementById("infopanel").style.visibility="visible";adultData();changeH3();document.getElementById("intropanel").style.visibility="visible";},2500)
+		mydata = data
+		console.log(mydata)
+		for (var i=0;i<mydata.length;i++){
+			countries_data[mydata[i]["ISO3_CODE"]]={
+			"40C_2020-2039_mean":mydata[i]["40C_2020-2039_mean"],
+			"40C_2040-2059_mean":mydata[i]["40C_2040-2059_mean"],
+			"40C_2060-2079_mean":mydata[i]["40C_2060-2079_mean"],
+			"40C_2080-2099_mean":mydata[i]["40C_2080-2099_mean"],
+			"40C_2020-2039_max":mydata[i]["40C_2020-2039_max"],
+			"40C_2040-2059_max":mydata[i]["40C_2040-2059_max"],
+			"40C_2060-2079_max":mydata[i]["40C_2060-2079_max"],
+			"40C_2080-2099_max":mydata[i]["40C_2080-2099_max"],
+			"40C_2020-2039_min":mydata[i]["40C_2020-2039_min"],
+			"40C_2040-2059_min":mydata[i]["40C_2040-2059_min"],
+			"40C_2060-2079_min":mydata[i]["40C_2060-2079_min"],
+			"40C_2080-2099_min":mydata[i]["40C_2080-2099_min"],
+			"ZIKA_PERC_2020-2039_mean":mydata[i]["ZIKA_PERC_2020-2039_mean"],
+			"ZIKA_PERC_2040-2059_mean":mydata[i]["ZIKA_PERC_2040-2059_mean"],
+			"ZIKA_PERC_2060-2079_mean":mydata[i]["ZIKA_PERC_2060-2079_mean"],
+			"ZIKA_PERC_2080-2099_mean":mydata[i]["ZIKA_PERC_2080-2099_mean"],
+			
+			};			
+		}
+		
+		console.log(countries);
+		
+		function init(){
+			//d3.csv("mooc-countries.csv", function(error, data) {	
+		//mydata = data;
+		document.getElementById("adult-age").focus();
+		
+		Globe = new ThreeGlobe()
+		  .globeImageUrl('images/earth-dark.jpg')
+		  .polygonsData(countries.features.filter(d => d.properties.ISO_A2 !== 'AQ'))
+		  //.polygonCapColor(() => 'rgba(200, 0, 0, 0.7)')
+		  .polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id]["40C_2020-2039_mean"]/200.0)} else {return 'rgba(50, 50, 50, 0.7)'}})
+		  //.polygonSideColor(() => 'rgba(0, 200, 0, 0.1)')
+		  .polygonSideColor(() => 'rgba(3, 136, 252, 0.1)')
+		  //.polygonStrokeColor(() => '#111');
+		  .polygonStrokeColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return '#111'} else {return '#111'}});
+		//.polygonLabel(function(d) {return '<b>'+d.id+'</b> <br />'});
+		//console.log(Globe)
+		//setTimeout(() => Globe.polygonAltitude(() => Math.random()), 2000);
+		setTimeout(() => Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return 0.01+countries_data[d.id]["40C_2020-2039_mean"]/200.0} else {return 0.01}}), 2000);
+		// Setup renderer
+		
+		raycaster = new THREE.Raycaster();
+		renderer = new THREE.WebGLRenderer();
+		renderer.setSize(window.innerWidth, window.innerHeight);
+		//renderer.setClearColor( 0x251d36, 1 );
+		document.getElementById('globeViz').appendChild(renderer.domElement);
+
+		// Setup scene
+		scene = new THREE.Scene();
+		scene.add(Globe);
+		scene.add(new THREE.AmbientLight(0xbbbbbb));
+		scene.add(new THREE.DirectionalLight(0xffffff, 0.6));
+
+		// Setup camera
+		camera = new THREE.PerspectiveCamera();
+		camera.aspect = window.innerWidth/ window.innerHeight;
+		camera.updateProjectionMatrix();
+		camera.position.z = 500;
+		//camera.position.x = 1000;
+		// Add camera controls
+		tbControls = new THREE.OrbitControls(camera, renderer.domElement);
+		tbControls.minDistance = 101;
+		tbControls.rotateSpeed = 1;
+		tbControls.zoomSpeed = 0.8;
+		tbControls.minPolarAngle = Math.PI/4;
+		tbControls.maxPolarAngle = Math.PI/2;
+		tbControls.enableDamping =true;
+		tbControls.dampingFactor = 0.03;
+		tbControls.enablePan = false;
+		document.addEventListener( 'mousemove', onPointerMove );
+		document.addEventListener( 'click', onDocumentMouseDown );
+		window.addEventListener( 'resize', onWindowResize );
+		}
+		
+		
+		
+		
+		function onWindowResize() {
+
+			camera.aspect = window.innerWidth / window.innerHeight;
+			camera.updateProjectionMatrix();
+
+			renderer.setSize( window.innerWidth, window.innerHeight );
+
+		}
+		function onPointerMove( event ) {
+				screenpointer.x = ( event.clientX);
+				screenpointer.y = ( event.clientY);
+				pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+				pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+				//console.log(pointer.x)
+			}
+			
+		function onDocumentMouseDown( event ) {
+				document.getElementById(selected_age).focus();
+			}
+			
+		// Kick-off renderer
+		function animate() { // IIFE
+		  
+			raycaster.setFromCamera( pointer, camera );
+			//var intersects = raycaster.intersectObjects( Globe, false );
+			const intersects = raycaster.intersectObjects( scene.children, true );
+			//console.log(scene.children[0].children[0].children[4].children)
+			if ( intersects.length > 0 ) {
+				//console.log(intersects.length)
+				//if (intersects[ 0 ].object.type=='Mesh'){
+					var polygon= intersects[ 0 ].object.parent//
+					if (polygon.hasOwnProperty('__data')){
+					var polygon_id=polygon.__data.data.properties.name;
+					//console.log(polygon.__data.data)
+					if ( INTERSECTED != polygon_id ) {
+
+				//	if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+
+						INTERSECTED = polygon_id;
+				//	INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
+				//	INTERSECTED.material.emissive.setHex( 0xff0000 );
+
+				//}
+					//console.log(INTERSECTED)
+					document.getElementById("infocard").style.visibility="visible";
+					let mytooltip= document.getElementById("titlecard");
+					
+					var string_inf_card='';
+					string_inf_card+='<h2>'+INTERSECTED+'</h2>'
+					string_inf_card+='<p>Mean no of days above 40C:</p>'
+					string_inf_card+='<p>Min no of days above 40C:</p>'
+					string_inf_card+='<p>Max no of days above 40C:</p>'
+					document.getElementById("titlecard").innerHTML=string_inf_card;
+					//mytooltip.style.left = (screenpointer.x+20)+'px';
+					//mytooltip.style.top = (screenpointer.y+20)+'px';
+					}
+					}
+				//}
+				
+
+			} else {
+
+				//if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+				let mytooltip= document.getElementById("titlecard");
+				INTERSECTED = "World";
+				mytooltip.innerHTML=""+INTERSECTED;
+				//document.getElementById("infocard").style.visibility="hidden";
+				
+				
+
+			}
+		  // Frame cycle
+		  tbControls.update();
+		  renderer.render(scene, camera);
+		  requestAnimationFrame(animate);
+		  
+		}
+		
+		init();
+		animate();
+		
+		
+		
+		
+	  //});
+  
+	});
+});
+
+function changeToHeat(){
+			setTimeout(() => Globe.polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id]["heat"])} else {return 'rgba(50, 50, 50, 0.7)'}}), 0);
+			Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return countries_data[d.id]["heat"]} else {return 0.01}})
+			if (document.getElementById(selected_age)){
+			document.getElementById(selected_age).focus();
+			}
+		}
+function changeToHotWet(){
+	setTimeout(() => Globe.polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id]["hotwet"])} else {return 'rgba(50, 50, 50, 0.7)'}}), 0);
+	Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return countries_data[d.id]["hotwet"]} else {return 0.01}})
+	if (document.getElementById(selected_age)){
+		document.getElementById(selected_age).focus();	
+	}
+}
+
+function changePeriodData(elem){
+	
+	if (elem.id=="tab1"){
+		selected_period=selected_health_impact+"2020-2039_mean"
+	}
+	else if (elem.id=="tab2"){
+		selected_period=selected_health_impact+"2040-2059_mean"
+	}
+	else if (elem.id=="tab3"){
+		selected_period=selected_health_impact+"2060-2079_mean"
+	}
+	else if (elem.id=="tab4"){
+		selected_period=selected_health_impact+"2080-2099_mean"
+	}
+	console.log(selected_period)
+	if (selected_health_impact=="40C_"){
+		setTimeout(() => Globe.polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id][selected_period]/200.0)} else {return 'rgba(50, 50, 50, 0.7)'}}), 0);
+		Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return 0.01+(countries_data[d.id][selected_period]/200.0)} else {return 0.01}})
+	}
+	if (selected_health_impact=="ZIKA_PERC_"){
+	
+		setTimeout(() => Globe.polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id][selected_period]/100.0)} else {return 'rgba(50, 50, 50, 0.7)'}}), 0);
+		Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return 0.01+(countries_data[d.id][selected_period]/100.0)} else {return 0.01}})
+	}
+	if (document.getElementById(selected_age)){
+		document.getElementById(selected_age).focus();	
+	}
+}
+
+
+
+
+function h1Data(){
+	setTimeout(() => Globe.polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id]["heat"])} else {return 'rgba(50, 50, 50, 0.7)'}}), 0);
+	Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return countries_data[d.id]["heat"]} else {return 0.01}})
+	if (document.getElementById(selected_age)){
+	document.getElementById(selected_age).focus();
+	}
+	selected_h="adult-h1";
+	
+}
+
+function h2Data(){
+	setTimeout(() => Globe.polygonCapColor(function(d) { if (countries_data.hasOwnProperty(d.id)){return color_scale_cold_hot(countries_data[d.id]["heat"])} else {return 'rgba(50, 50, 50, 0.7)'}}), 0);
+	Globe.polygonAltitude(function(d) { if (countries_data.hasOwnProperty(d.id)){return countries_data[d.id]["heat"]} else {return 0.01}})
+	if (document.getElementById(selected_age)){
+	document.getElementById(selected_age).focus();
+	}
+	selected_h="adult-h2";
+	
+}
+
+function foetusData(){
+	console.log("foetus data")
+	selected_age="unborn-age";
+	var string_h='';
+	string_h+='<ul class="tab2" style="width: 100%;">'
+	string_h+='		<li style="font-size:24px;" class="sf-normal">'
+	string_h+='			<input onclick="changeH1()" id="h1" checked="checked" type="radio" name="tab2" />'
+	string_h+='			<label for="h1">Preterm births</label>'
+	string_h+='		</li>'
+	string_h+='		<li style="font-size:24px;" class="sf-normal">'
+	string_h+='			<input onclick="changeH2()" id="h2" type="radio" name="tab2" />'
+	string_h+='			<label for="h2">Zika Virus</label>'
+	string_h+='		</li>'	
+	//string_h+='		<li style="font-size:24px;" class="sf-normal">'
+	//string_h+='			<input onclick="changeH2()" id="h3" type="radio" name="tab2" />'
+	//string_h+='			<label for="h3">Death</label>'
+	//string_h+='		</li>'	
+	string_h+='	</ul>'
+	document.getElementById("health-problems").innerHTML=string_h;
+	changeH1();
+}
+
+function childrenData(){
+	console.log("children data")
+	selected_age="children-age";
+	var string_h='';
+	string_h+='<ul class="tab2" style="width: 100%;">'
+string_h+='		<li style="font-size:24px;" class="sf-normal">'
+string_h+='			<input onclick="changeH3()" id="h3" checked="checked" type="radio" name="tab2" />'
+string_h+='			<label for="h3">Hospital admissions</label>'
+string_h+='		</li>'
+string_h+='		<li style="font-size:24px;" class="sf-normal">'
+string_h+='			<input onclick="changeH4()" id="h4" type="radio" name="tab2" />'
+string_h+='			<label for="h4">Malaria</label>'
+string_h+='		</li>'	
+//string_h+='		<li style="font-size:24px;" class="sf-normal">'
+//string_h+='			<input onclick="changeH2()" id="h3" type="radio" name="tab2" />'
+//string_h+='			<label for="h3">Death</label>'
+//string_h+='		</li>'	
+string_h+='	</ul>'
+	document.getElementById("health-problems").innerHTML=string_h;
+	changeH3();
+}
+
+function adultData(){
+	console.log("adult data")
+	selected_age="adult-age";
+	var string_h='';
+	string_h+='<ul class="tab2" style="width: 100%;">'
+string_h+='		<li style="font-size:24px;" class="sf-normal">'
+string_h+='			<input onclick="changeH3()" id="h3" checked="checked" type="radio" name="tab2" />'
+string_h+='			<label for="h3">Hospital admissions</label>'
+string_h+='		</li>'
+string_h+='		<li style="font-size:24px;" class="sf-normal">'
+string_h+='			<input onclick="changeH4()" id="h4" type="radio" name="tab2" />'
+string_h+='			<label for="h4">Malaria</label>'
+string_h+='		</li>'	
+//string_h+='		<li style="font-size:24px;" class="sf-normal">'
+//string_h+='			<input onclick="changeH2()" id="h3" type="radio" name="tab2" />'
+//string_h+='			<label for="h3">Death</label>'
+//string_h+='		</li>'	
+string_h+='	</ul>'
+	document.getElementById("health-problems").innerHTML=string_h;
+	changeH3();
+}
+
+function elderlyData(){
+	console.log("elderly data")
+	selected_age="elderly-age";
+	var string_h='';
+	string_h+='<ul class="tab2" style="width: 100%;">'
+	string_h+='		<li style="font-size:24px;" class="sf-normal">'
+string_h+='			<input onclick="changeH3()" id="h3" checked="checked" type="radio" name="tab2" />'
+string_h+='			<label for="h3">Hospital admissions</label>'
+string_h+='		</li>'
+	string_h+='		<li style="font-size:24px;" class="sf-normal">'
+	string_h+='			<input onclick="changeH5()" id="h5" type="radio" name="tab2" />'
+	string_h+='			<label for="h5">Mortality</label>'
+	string_h+='		</li>'	
+	string_h+='	</ul>'
+	document.getElementById("health-problems").innerHTML=string_h;
+	changeH3();
+}
+
+function toggleSound(elem){
+	sound_on=!sound_on;
+	localStorage.setItem("sound_on", sound_on);
+	console.log(sound_on)
+	if (sound_on){
+		elem.src="images/sound-on-128.png"
+		play_audio("ding")
+	}
+	else{
+		elem.src="images/sound-off-128.png"
+		document.getElementById("myplayer").pause();
+		document.getElementById("myplayer").currentTime = 0;
+	}
+	
+}
+
+function play_audio(track){
+	if (sound_on){
+		
+		if (track=="ding"){ //&& audio_played.indexOf(track)==-1){
+			document.getElementById("myplayer").src=audio_library["ding"];
+			document.getElementById("myplayer").play();
+		}
+		if (track=="admissions"){ //&& audio_played.indexOf(track)==-1){
+			document.getElementById("myplayer").src=audio_library["admissions"];
+			document.getElementById("myplayer").play();
+		}
+		if (track=="malaria"){ //&& audio_played.indexOf(track)==-1){
+			document.getElementById("myplayer").src=audio_library["malaria"];
+			document.getElementById("myplayer").play();
+		}
+		if (track=="zika"){// && audio_played.indexOf(track)==-1){
+			document.getElementById("myplayer").src=audio_library["zika"];
+			document.getElementById("myplayer").play();
+		}
+		if (track=="preterm"){// && audio_played.indexOf(track)==-1){
+			document.getElementById("myplayer").src=audio_library["preterm"];
+			document.getElementById("myplayer").play();
+		}
+		if (track=="mortality"){// && audio_played.indexOf(track)==-1){
+			document.getElementById("myplayer").src=audio_library["mortality"];
+			document.getElementById("myplayer").play();
+		}
+		if (track=="exposome"){// && audio_played.indexOf(track)==-1){
+			document.getElementById("myplayer").src=audio_library["exposome"];
+			document.getElementById("myplayer").play();
+		}
+	}
+}
+
+function playing(){
+	//console.log("playing :" +document.getElementById("myplayer").src)
+	var key= document.getElementById("myplayer").src.split("audio/")[1].replace('.mp3','');
+	if (audio_played.indexOf(key)==-1){
+		audio_played.push(key);
+		
+	}
+	console.log(audio_played)
+}
+function finished_playing(){
+	var key= document.getElementById("myplayer").src.split("audio/")[1].replace('.mp3','');
+	//if (key=="circular_economy_score1"){
+	//	play_audio("water_health_score");
+	//}
+	
+}
+
+function changeH1(){
+	selected_health_impact="40C_";
+	var string_content='';
+	string_content+='<p>An <a href="https://www.nationalpartnership.org/our-work/health/moms-and-babies/higher-temperatures-hurt-moms.html">online article </a> by the national partnership for women and families explains that heat exposure during pregnancy hurts babies\' health. Maternal exposure to heat is associated with an increased risk of preterm and early term birth, low and decreased birth weight, stillbirth, and harmful newborn stress. From climate predictions, we count the number of days with a temperature above 40C and infer some risk of preterm birth.</p>'
+	document.getElementById("content-info").innerHTML=string_content;
+	play_audio("preterm");
+}
+function changeH2(){
+	selected_health_impact="ZIKA_PERC_";
+	var string_content='';
+	string_content+='<p>A study by <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6111177/">Tesla et Al</a> associates the rise in Zika Virus transmission with average temperatures between 28 and 34 degrees .</p><p>From climate predictions, we count the number of days within this temperature range to infer a greater Zika virus transmission rate. For unborn babies, contracting the Zika Virus can lead to serious birth defects such as microcephaly (where the baby head is smaller than normal).</p>'
+	document.getElementById("content-info").innerHTML=string_content;
+	play_audio("zika");
+}
+function changeH3(){
+	selected_health_impact="40C_";
+	var string_content='';
+	string_content+='<p>A study by <a href="https://academic.oup.com/aje/article/172/9/1053/147649">Ostro et Al</a> covering 87% of California\'s total population shows that incremental increases of 5.6C above 30C lead to a rise in the percentage of hospital admissions for Dehydration (+11.2%) , Heat stroke (+364%) , and Acute renal failure (+10.2%).</p><p>From climate predictions, we count the number of days with a temperature above 40C and infer that they will lead to a rise in such hospital admissions.</p>'
+	document.getElementById("content-info").innerHTML=string_content;
+	play_audio("admissions");
+}
+function changeH4(){
+	selected_health_impact="ZIKA_PERC_";
+	var string_content='';
+	string_content+='<p>A <a href="https://www.thelancet.com/journals/lanplh/article/PIIS2542-51962100132-7/fulltext">Lancet study</a> associates the rise of the number of months suitable to Malaria transmission per year with monthly precipitations greater than 80 mm, average temperatures between 18 and 32 degrees celsius, and a relative humidity greater than 60%</p><p>From climate predictions, we count the number of suitable transmission months per year or Lancet Countdown malaria indicator (LCMI). Countries with higher LCMI are more likely to show a higher incidence of Malaria in densely populated areas.</p>'
+	document.getElementById("content-info").innerHTML=string_content;
+	play_audio("malaria");
+}
+function changeH5(){
+	selected_health_impact="40C_";
+	var string_content='';
+	string_content+='<p>A <a href="https://www.sciencedirect.com/science/article/abs/pii/S0140673606680793?casa_token=ssO8BVbWFVUAAAAA:vP6o2Kr6sNklzCIBadc0I0SWinJfdDRQZItbuDbw5pjci0dvocPkwVJoGyUE_oGoXPb6UG_3#bib29">Lancet study</a> has observed that for each degree Celsius above the optimum of 16.5 C in the preceding month, mortality is increased by 1.86%, 12.82%, and 2.72% for cardiovascular disease, respiratory diseases, and total mortality, respectively.'
+	document.getElementById("content-info").innerHTML=string_content;
+	play_audio("mortality");
+}
+
+function playIntro(){
+	play_audio("exposome");
+}
+
+function exitIntro(){
+	document.getElementById("intropanel").style.visibility="hidden";
+	document.getElementById("myplayer").pause();
+		document.getElementById("myplayer").currentTime = 0;
+}
+function enterIntro(){
+	document.getElementById("intropanel").style.visibility="visible";
+}
+</script>
+</body>
